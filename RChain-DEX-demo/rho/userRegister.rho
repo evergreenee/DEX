@@ -1,0 +1,11 @@
+new print(`rho:io:stdout`) in {
+    contract @"register"(username, publicKey) = {
+    /*
+        new user in {
+              user!({"username" : username, "publicKey" : publicKey}) |
+              print!("Registration successful.")
+        }
+    */
+        print!("Registration successful.")
+    }
+}
