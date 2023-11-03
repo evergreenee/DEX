@@ -22,7 +22,7 @@ const func_deploy = async (rho_code_, order_) => {
         {
             deployer: PUBLIC_KEY,
             timestamp: _timestamp,
-            nameQty: 1
+            nameQty: 3
         }
     );
     console.log('Prepare deploy...');
@@ -63,46 +63,59 @@ const func_deploy = async (rho_code_, order_) => {
         console.log('Propose Success!\n');
 
     await new Promise(resolve => setTimeout(resolve, 5000));
-//    let ret;
-//
-//    if(order_ >= 0){
-//        const dataAtUnforgeableName = await rchainToolkit.http.dataAtName(
-//              READ_ONLY_HOST,
-//              {
-//                name: {
-//                  UnforgPrivate: { data: JSON.parse(pd).names[order_] }
-//                },
-//                depth: 1
-//              }
-//        );
-//
-//        console.log('data-at-name response:');
-//        console.log(dataAtUnforgeableName + '\n');
-//
-//        const data_json = JSON.parse(dataAtUnforgeableName).exprs[0];
-//
-//        let data;
-//
-//        if(data_json != null){
-//              data = rchainToolkit.utils.rhoValToJs(
-//                data_json.expr
-//              );
-//        } else {
-//              data = null;
-//        }
-//
-//        console.log('data:');
-//        console.log(data  + '\n');
-//
-//        ret = data;
+    let ret;
+
+    if(order_ >= 0){
+        const dataAtUnforgeableName = await rchainToolkit.http.dataAtName(
+              READ_ONLY_HOST,
+              {
+                name: {
+                  UnforgPrivate: { data: JSON.parse(pd).names[order_] }
+                },
+                depth: 1
+              }
+        );
+
+        console.log('data-at-name response:');
+        console.log(dataAtUnforgeableName + '\n');
+
+        if (dataAtUnforgeableName) {
+          const parsedData = JSON.parse(dataAtUnforgeableName);
+          if (parsedData && parsedData.exprs && parsedData.exprs.length > 0) {
+            const data_json = parsedData.exprs[0];
+            // 现在可以安全地访问 data_json 的属性
+          } else {
+            console.error("无法找到有效的 exprs 数据");
+            return;
+          }
+        } else {
+          console.error("dataAtUnforgeableName 为空或未定义");
+        }
+
+        //const data_json = JSON.parse(dataAtUnforgeableName).exprs[0];
+
+        let data;
+
+        if(data_json != null){
+              data = rchainToolkit.utils.rhoValToJs(
+                data_json.expr
+              );
+        } else {
+              data = null;
+        }
+
+        console.log('data:');
+        console.log(data  + '\n');
+
+        ret = data;
         console.log('Deploy Finished!\n');
 
-//      } else {
-//        ret = null;
-//        console.log('Simple Deploy Finished!\n');
-//      }
+      } else {
+        ret = null;
+        console.log('Simple Deploy Finished!\n');
+      }
 
-      //return ret;
+      return ret;
 };
 
 const func_deploy_fromfile = async (rho_file_, order_) => {
