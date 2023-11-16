@@ -3,12 +3,12 @@
         <v-sheet color="transparent">
             <v-row>
                 <v-col>
-                    <v-text-field clearable label="PrivateKey" v-model="privateKey"></v-text-field>
+                    <v-text-field clearable label="PrivateKey" v-model="privateKey" />
                 </v-col>
             </v-row>
             <v-row>
                 <v-col cols="4">
-                    <v-btn @click="login">
+                    <v-btn @click="login" :loading="loading">
                         Login
                     </v-btn>
                 </v-col>
@@ -30,8 +30,10 @@ import { useUserStore } from '@/store/userStore';
 
 const userStore = useUserStore();
 const privateKey = ref('');
+const loading = ref(false);
 
 function login() {
+    loading.value = true;
     post(
         '/login',
         {
@@ -42,8 +44,8 @@ function login() {
             privateKey: privateKey.value,
             publicKey: res.data.publicKey,
             balance: res.data.balance,
-            revAddr:res.data.addr,
-            bulletBalance:res.data.bulletBalance,
+            revAddr: res.data.addr,
+            bulletBalance: res.data.bulletBalance,
         });
 
         console.log(res.data);

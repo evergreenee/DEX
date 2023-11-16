@@ -52,48 +52,42 @@ new userCh, print(`rho:io:stdout`), ret in {
         }
         |
         contract checkBulletBalance(addr, ret) = {
-            new rl(`rho:registry:lookup`), BulletVaultCh, vaultCh, balanceCh in {
-                rl!(`rho:id:auz8oqkczecbiq7jmeeeoyackumqybo4pijfec3rnjccwz6mhtqr9t`, *BulletVaultCh) |
-                for (@(_, BulletVault) <- BulletVaultCh) {
-                    /*match *addr {
-                        revAddress => {*/
-                            print!(("Accessing vault at RevAddress", *addr)) |
-                            //@BulletVault!("findOrCreate", revAddress, *vaultCh) |
-                            @BulletVault!("findOrCreate", *addr, *vaultCh) |
+            new rl(`rho:registry:lookup`), BulletVaultCh, vaultCh, balanceCh, res in {
+                rl!(`rho:id:7ikbnf4s9odmzd88rh6k8wyojb3zsk13mbohsgmnpdwqbqmfnjbcbu`, *BulletVaultCh) |
+                for (@BulletVault <- BulletVaultCh) {
+                    match *addr {
+                        revAddress => {
+                            print!(("Accessing vault at RevAddress", revAddress)) |
+                            @BulletVault!("findOrCreate", revAddress, *vaultCh) |
+                            // @BulletVault!("test", *res)|
+                            // @"BulletVault"!("findOrCreate", *addr, *vaultCh) |
                             for (@(true, vault) <- vaultCh) {
                                 print!("Obtained vault, checking balance") |
                                 @vault!("balance", *balanceCh) |
                                 for (@balance <- balanceCh) {
-                                    ret!("Bullet Balance is:",balance)
+                                    print!("Bullet Balance is:",balance)
                                 }
                             }
-                        /*}
-                    }*/
+                        }
+                    }
                 }
             }
         }
         |
         contract depositForBullet(amount) = {
             new rl(`rho:registry:lookup`), BulletVaultCh, retCh in {
-                rl!(`rho:id:auz8oqkczecbiq7jmeeeoyackumqybo4pijfec3rnjccwz6mhtqr9t`, *BulletVaultCh) |
-                // for (@(_, BulletVault) <- BulletVaultCh) {
-                //     match *amount{
-                //         amount => {
-                //             @BulletVault!("deposit", amount, *retCh) |
-                //             for (@result <- retCh) {
-                //                 print!(("Finished deposit, pay amount: ", amount, "result was:", result)) |
-                //                 if(result != Nil){
-                //                     print!("2")
-                //                 }else{
-                //                     print!("3")
-                //                 }
-                //             }
-                //             |
-                //             print!("1")
-                //         }
-                //     }
-                // }|
-                print!("test")
+                rl!(`rho:id:twtuc9w1mrptu1sbtkzt6syzk4n88587afxmshcxk5qeff6dynspm9`, *BulletVaultCh) |
+                for (@BulletVault <- BulletVaultCh) {
+                    match *amount{
+                        amount => {
+                            print!("start deposit")|
+                            @BulletVault!("deposit", amount, *retCh) |
+                            for (@result <- retCh) {
+                                print!(("Finished deposit, pay amount: ", amount, "result was:", result))
+                            }
+                        }
+                    }
+                }
             }
         }
     }

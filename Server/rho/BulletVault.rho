@@ -44,7 +44,10 @@ in {
                   }
                 }
               } |
-
+              contract BulletVault(@"test",res) = {
+                res!("test success")
+              }
+              |
               contract BulletVault(@"deployerAuthKey", deployerId, ret) = {
                 new DeployerIdOps(`rho:rchain:deployerId:ops`),
                     revAddrCh, deployerPubKeyBytesCh
@@ -344,10 +347,11 @@ in {
                     @Either!("fromBoolean <-", *depositSuccessCh, "BUG FOUND: purse deposit failed", *retCh)
                   }
                 }
-              } |
+              } 
+              |
               insertArbitrary!(bundle+{*BulletVault}, *uriOut) |
               for(@uri <- uriOut) {
-                deployId!(uri)|
+                //deployId!(uri) |
                 stdout!(uri)
               }
             }

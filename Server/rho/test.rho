@@ -1,0 +1,14 @@
+new test, insertArbitrary(`rho:registry:insertArbitrary`), stdout(`rho:io:stdout`), uriOut in {
+    contract test(@"one",ret) = {
+        ret!("1")
+    }
+    |
+    contract test(@"two",ret) = {
+        ret!("2")
+    }
+    |
+    insertArbitrary!(bundle+{*test}, *uriOut) |
+    for(@uri <- uriOut) {
+        stdout!(uri)
+    }
+}

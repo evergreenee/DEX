@@ -12,6 +12,8 @@
 
   （目前只能从 28a5c9ac133b4449ca38e9bdf7cacdce31079ef6b3ac2f0a080af83ecff98b36 转出，使用其他账号转移会报错 Invalid Authkey）
 
+- 实现了同一机器不同虚拟机对交易所的连接，只需要一台虚拟机运行 server，其他虚拟机可以通过运行前端连接到交易所
+
 - 与 Bullet 相关的功能正在开发，暂未可用
 
 ## 2 使用流程
@@ -52,6 +54,5 @@
 
 ## 3 后续
 
-- 实现代币转换 REV -> Bullet （通过 BulletVault.rho 中的 deposit 实现）
-- 实现多机器连接交易所
-- 实现多代币间的自动做市商
+- 实现代币兑换 REV -> Bullet （通过 BulletVault.rho 中的 deposit 实现）
+- 自动做市商

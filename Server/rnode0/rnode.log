@@ -1,0 +1,828 @@
+2023-11-15 14:02:46,631 [INFO ] [main                ] [coop.rchain.node.Main$       ]- RChain Node 0.13.0-alpha3 (c766347c6df06d813f802ae9e4ca1186647cf070)
+2023-11-15 14:02:46,634 [INFO ] [main                ] [coop.rchain.node.Main$       ]- Starting with profile default
+2023-11-15 14:02:46,635 [INFO ] [main                ] [coop.rchain.node.Main$       ]- Using configuration file: /home/nardack/Desktop/DEX/Server/config.conf
+2023-11-15 14:02:46,635 [INFO ] [main                ] [coop.rchain.node.Main$       ]- Running on network: testnet
+2023-11-15 14:02:46,821 [INFO ] [main                ] [c.r.node.NodeEnvironment$    ]- Using data dir: /home/nardack/Desktop/DEX/Server/rnode0
+2023-11-15 14:02:46,826 [INFO ] [main                ] [t.GenerateCertificateIfAbsent]- No certificate found at path rnode0/node.certificate.pem
+2023-11-15 14:02:46,827 [INFO ] [main                ] [t.GenerateCertificateIfAbsent]- Generating a X.509 certificate for the node
+2023-11-15 14:02:46,828 [INFO ] [main                ] [t.GenerateCertificateIfAbsent]- Generating a PEM secret key for the node
+2023-11-15 14:02:47,085 [DEBUG] [main                ] [jdk.event.security           ]- X509Certificate: Alg:SHA256withECDSA, Serial:f9ab9e30c5001140, Subject:CN=94d8db121d16547a31b43f3bec2dc9635b0cec22, Issuer:CN=94d8db121d16547a31b43f3bec2dc9635b0cec22, Key type:EC, Length:256, Cert Id:1255123045, Valid from:2023/11/15 下午10:02, Valid until:2024/11/14 下午10:02
+2023-11-15 14:02:47,264 [DEBUG] [main                ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB environment: rnode0/dagstorage
+2023-11-15 14:02:47,435 [DEBUG] [main                ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB database: last-finalized-block, env: rnode0/dagstorage
+2023-11-15 14:02:47,458 [INFO ] [main                ] [c.r.b.dag.BlockMetadataStore$]- Building in-memory blockMetadataStore.
+2023-11-15 14:02:47,461 [DEBUG] [main                ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB database: block-metadata, env: rnode0/dagstorage
+2023-11-15 14:02:47,470 [INFO ] [main                ] [c.r.b.dag.BlockMetadataStore$]- Reading data from blockMetadataStore done.
+2023-11-15 14:02:47,495 [INFO ] [main                ] [c.r.b.dag.BlockMetadataStore$]- Successfully built in-memory blockMetadataStore.
+2023-11-15 14:02:47,505 [DEBUG] [main                ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB environment: rnode0/casperbuffer
+2023-11-15 14:02:47,506 [DEBUG] [main                ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB database: parents-map, env: rnode0/casperbuffer
+2023-11-15 14:02:47,568 [DEBUG] [main                ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB environment: rnode0/eval/history
+2023-11-15 14:02:47,569 [DEBUG] [main                ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB database: eval-roots, env: rnode0/eval/history
+2023-11-15 14:02:47,594 [DEBUG] [main                ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB database: eval-history, env: rnode0/eval/history
+2023-11-15 14:02:48,826 [DEBUG] [main                ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB environment: rnode0/rspace/history
+2023-11-15 14:02:48,827 [DEBUG] [main                ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB database: rspace-roots, env: rnode0/rspace/history
+2023-11-15 14:02:48,831 [DEBUG] [main                ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB database: rspace-history, env: rnode0/rspace/history
+2023-11-15 14:02:49,084 [DEBUG] [node-runner-18      ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB database: blocks-approved, env: rnode0/dagstorage
+2023-11-15 14:02:49,132 [INFO ] [node-runner-18      ] [c.r.c.e.CasperLaunch$$anon$1 ]- Approved block not found, taking part in ceremony as ceremony master
+2023-11-15 14:02:49,150 [INFO ] [node-runner-18      ] [c.r.casper.util.VaultParser$ ]- Parsing wallets file rnode0/genesis/wallets.txt.
+2023-11-15 14:02:49,268 [INFO ] [node-runner-18      ] [c.r.casper.util.VaultParser$ ]- Wallet loaded: 1111Wbd8KLeWBVsxByF9iksJ4QRRjEF3nq1ScgAw7bMbtomxHsqqd,1000000000000000,0
+2023-11-15 14:02:49,270 [INFO ] [node-runner-18      ] [c.r.casper.util.VaultParser$ ]- Wallet loaded: 1111235s1WgxZjTRi1McWXNtys53mhUSmXoRq72YMzGL6v12fkLFHv,100000000,0
+2023-11-15 14:02:49,271 [INFO ] [node-runner-18      ] [c.r.casper.util.VaultParser$ ]- Wallet loaded: 11112Bqt2LBKM2k5UbS9twPzf7VzhCuNt8Tj1ncVQruA1hhMDJWpfB,1000,0
+2023-11-15 14:02:49,296 [INFO ] [node-runner-18      ] [c.r.casper.util.BondsParser$ ]- Parsing bonds file rnode0/genesis/bonds.txt.
+2023-11-15 14:02:49,307 [INFO ] [node-runner-18      ] [c.r.casper.util.BondsParser$ ]- Bond loaded 04be064356846e36e485408df50b877dd99ba406d87208add4c92b3c7d4e4c663c2fbc6a1e6534c7e5c0aec00b26486fad1daf20079423b7c8ebffbbdff3682b58 => 100000000000
+2023-11-15 14:02:49,310 [INFO ] [node-runner-18      ] [c.r.casper.util.BondsParser$ ]- Bond loaded 042e13eadc97fb886eed6ba8fda1f1aa5d1cb653f1fcb765cf03c9cfdcba01aa79f367ec0dd86bf8a0508110aa97b66fdf7139fa8bbac86a8b9c1dac20e656574c => 1000000
+2023-11-15 14:02:49,313 [INFO ] [node-runner-18      ] [c.r.casper.util.BondsParser$ ]- Bond loaded 049ab5d17cda550253f76425d33c69891a99a6d00d7b190767305e493ce5b35f823a1ec144c9242c1ceb5e915095dabaff30f6fea48c5dcb213c6fb7a87050f657 => 1000000
+2023-11-15 14:02:49,316 [INFO ] [node-runner-18      ] [c.r.casper.util.BondsParser$ ]- Bond loaded 04d34d5f438e9db72725489b54e8012f856d9a26e3ab4dea6e5938bdf91b7d7952e6ebb263450315d71176d1718681fd9814c330cfac07e8b9b8d84e6c72dfdd78 => 1000000
+2023-11-15 14:02:50,469 [DEBUG] [node-runner-26      ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB environment: rnode0/rspace/cold
+2023-11-15 14:02:50,470 [DEBUG] [node-runner-26      ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB database: rspace-cold, env: rnode0/rspace/cold
+2023-11-15 14:02:58,775 [DEBUG] [node-runner-18      ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB database: mergeable-channel-cache, env: rnode0/dagstorage
+2023-11-15 14:02:59,144 [INFO ] [node-runner-18      ] [c.r.node.runtime.NodeRuntime ]- Starting stand-alone node.
+2023-11-15 14:03:00,123 [INFO ] [node-runner-18      ] [c.r.n.r.ServersInstances$    ]- HTTP API server started at localhost:40403
+2023-11-15 14:03:00,137 [INFO ] [node-runner-18      ] [c.r.n.r.ServersInstances$    ]- Admin HTTP API server started at localhost:40405
+2023-11-15 14:03:00,217 [INFO ] [node-runner-23      ] [ocol$ApproveBlockProtocolImpl]- Starting execution of ApprovedBlockProtocol. Waiting for 0 approvals from genesis validators.
+2023-11-15 14:03:00,219 [INFO ] [node-runner-23      ] [ocol$ApproveBlockProtocolImpl]- Self-approving genesis block.
+2023-11-15 14:03:00,232 [DEBUG] [node-runner-26      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 14:03:00,251 [INFO ] [node-runner-23      ] [ocol$ApproveBlockProtocolImpl]- Sending ApprovedBlock 07958bcf85... to peers...
+2023-11-15 14:03:00,270 [INFO ] [node-runner-23      ] [ocol$ApproveBlockProtocolImpl]- Finished execution of ApprovedBlockProtocol
+2023-11-15 14:03:00,364 [INFO ] [node-runner-37      ] [c.r.n.r.ServersInstances$    ]- Kademlia RPC server started at 192.168.59.133:40404
+2023-11-15 14:03:00,364 [INFO ] [node-runner-27      ] [c.r.n.r.ServersInstances$    ]- Internal API server started at 192.168.59.133:40402
+2023-11-15 14:03:00,364 [INFO ] [node-runner-29      ] [c.r.n.r.ServersInstances$    ]- External API server started at localhost:40401
+2023-11-15 14:03:00,391 [DEBUG] [node-runner-25      ] [jdk.event.security           ]- X509Certificate: Alg:SHA256withRSA, Serial:752bd03efd500194, Subject:CN=example.com, Issuer:CN=example.com, Key type:RSA, Length:2048, Cert Id:1467855822, Valid from:2018/4/7 上午6:06, Valid until:10000/1/1 上午7:59
+2023-11-15 14:03:00,532 [INFO ] [node-runner-25      ] [c.r.n.r.ServersInstances$    ]- Listening for traffic on rnode://94d8db121d16547a31b43f3bec2dc9635b0cec22@192.168.59.133?protocol=40400&discovery=40404.
+2023-11-15 14:03:01,158 [DEBUG] [node-runner-26      ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB environment: rnode0/blockstorage
+2023-11-15 14:03:01,159 [DEBUG] [node-runner-26      ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB database: blocks, env: rnode0/blockstorage
+2023-11-15 14:03:01,175 [WARN ] [node-runner-26      ] [.b.d.BlockDagKeyValueStorage$]- Block Block #0 (07958bcf85...) with empty parents (supposedly genesis) sender is empty.
+2023-11-15 14:03:01,185 [DEBUG] [node-runner-26      ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB database: deploy-index, env: rnode0/dagstorage
+2023-11-15 14:03:01,208 [DEBUG] [node-runner-26      ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB database: latest-messages, env: rnode0/dagstorage
+2023-11-15 14:03:01,234 [DEBUG] [node-runner-26      ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB database: invalid-blocks, env: rnode0/dagstorage
+2023-11-15 14:03:01,259 [INFO ] [node-runner-26      ] [c.r.casper.engine.Engine$    ]- Making a transition to Running state. Approved Block #0 (07958bcf85...) with empty parents (supposedly genesis)
+2023-11-15 14:03:01,294 [INFO ] [node-runner-26      ] [c.r.c.util.comm.CommUtilOps  ]- Requested fork tip from peers
+2023-11-15 14:03:03,299 [DEBUG] [node-runner-37      ] [c.r.c.safety.CliqueOracle$   ]- Calculating fault tolerance for 07958bcf8533abff45e792b8f66e26150eb25ec32ef512cffdaab4b00dacbffa.
+2023-11-15 14:03:03,349 [DEBUG] [node-runner-23      ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB database: equivocation-tracker, env: rnode0/dagstorage
+2023-11-15 14:03:03,604 [DEBUG] [node-runner-27      ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB environment: rnode0/deploystorage
+2023-11-15 14:03:03,605 [DEBUG] [node-runner-27      ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB database: deploy_storage, env: rnode0/deploystorage
+2023-11-15 14:03:03,609 [INFO ] [node-runner-27      ] [c.r.c.MultiParentCasperImpl  ]- Received DeployData #1700056982905 -- new
+  BulletVault, rs(`rho:registry:insertSigned:secp256k1`), uriOut,
+  rl(`rho:registry:lookup`), RevAddress(`rho:rev:address`),
+  insertArbitrary(`rho:registry:insertArbitrary`),
+  stdout(`rho:io:stdout`), deployId(`rho:rchain:deployId`),
+  MakeMintCh, AuthKeyCh, EitherCh, TreeHashMapCh, RevVaultCh, 
+  _makeVault,
+  _newVault,
+  _create,
+  _bulletVault,
+  _transferTemplate,
+  _depositTemplate
+in {
+  rl!(`rho:rchain:makeMint`, *MakeMintCh) |
+  rl!(`rho:rchain:authKey`, *AuthKeyCh) |
+  rl!(`rho:lang:either`, *EitherCh) |
+  rl!(`rho:lang:treeHashMap`, *TreeHashMapCh) |
+  rl!(`rho:rchain:revVault`, *RevVaultCh) |
+  for (@(_, MakeMint) <- MakeMintCh;
+       @(_, AuthKey)  <- AuthKeyCh;
+       @(_, Either)   <- EitherCh;
+       @(_, RevVault) <- RevVaultCh; 
+       TreeHashMap    <- TreeHashMapCh) {
+    new mintCh, revMapStore, bulletMapStore, initVault, unf, authKeyCh, revHouseAddrCh in {
+      // generate revHouse for holding deposited REV 
+      RevAddress!("fromUnforgeable", *unf, *revHouseAddrCh) |
+      @RevVault!("unforgeableAuthKey", *unf, *authKeyCh) |
+      for (@revHouseVaultAuthKey <- authKeyCh;  @revHouseAddr <- revHouseAddrCh) {
+        new revHouseVaultCh, _depositList in {
+          @RevVault!("findOrCreate", revHouseAddr, *revHouseVaultCh) |
+          deployId!(["revHouseAddr : ",revHouseAddr])|
+          // mapstore for depositing REV
+          TreeHashMap!("init", 2, *revMapStore) |
+          // mapstore for bullet token
+          TreeHashMap!("init", 2, *bulletMapStore)| 
+          for (@(true, revHouseVault) <- revHouseVaultCh; @revMap <- revMapStore; @bulletMap <- bulletMapStore) {
+            @MakeMint!(*mintCh) |
+            for (mint <- mintCh) {
+              contract initVault(name, @address, @initialAmount) = {
+                new purseCh in {
+                  mint!("makePurse", initialAmount, *purseCh) |
+                  for (purse <- purseCh) {
+                    _newVault!(*name, address, *purse)  
+                  }
+                }
+              } |
+              contract BulletVault(@"test",res) = {
+                res!("test success")
+              }
+              |
+              contract BulletVault(@"deployerAuthKey", deployerId, ret) = {
+                new DeployerIdOps(`rho:rchain:deployerId:ops`),
+                    revAddrCh, deployerPubKeyBytesCh
+                in {
+                  DeployerIdOps!("pubKeyBytes", *deployerId, *deployerPubKeyBytesCh) |
+                  for (@deployerPubKeyBytes <- deployerPubKeyBytesCh) {
+                    RevAddress!("fromPublicKey", deployerPubKeyBytes, *revAddrCh) |
+                    for (@deployerRevAddress <- revAddrCh) {
+                      @AuthKey!("make", (*_bulletVault, deployerRevAddress), *ret)
+                    }
+                  }
+                }
+              } |
+              contract BulletVault(@"unforgeableAuthKey", unf, ret) = {
+                new revAddrCh in {
+                  RevAddress!("fromUnforgeable", *unf, *revAddrCh) |
+                  for (@unfRevAddress <- revAddrCh) {
+                    @AuthKey!("make", (*_bulletVault, unfRevAddress), *ret)
+                  }
+                }
+              } |
+              contract BulletVault(@"findOrCreate", @revAddress, retCh) = {
+                new revAddressValidCh, revAddressValidEitherCh in {
+                  RevAddress!("validate", revAddress, *revAddressValidCh) |
+                  @Either!("fromNillableError <-", *revAddressValidCh, *revAddressValidEitherCh) |
+                  for (@revAddressEither <- revAddressValidEitherCh) {
+                    match revAddressEither {
+                      (false, _) => {
+                        retCh!(revAddressEither)
+                      }
+                      _ => {
+                        new createVault, vaultCh, getVaultCh in {
+                          TreeHashMap!("get", bulletMap, revAddress, *getVaultCh) |
+                          for (@vault <- getVaultCh) {
+                            if (vault != Nil) {
+                              retCh!((true, vault))
+                            } else {
+                              _create!(revAddress, *createVault, *vaultCh) |
+                              for (vaultRetCh <- createVault) {
+                                _makeVault!(revAddress, 0, *vaultRetCh) |
+                                stdout!("111")|
+                                for (@eitherVault <- vaultCh) {
+                                  retCh!(eitherVault)
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              } |
+
+              contract BulletVault(@"deposit", @amount, retCh) = {
+                new DeployerIdOps(`rho:rchain:deployerId:ops`),
+                    revAddrCh, deployerPubKeyBytesCh, deployerId(`rho:rchain:deployerId`)  
+                in {
+                  DeployerIdOps!("pubKeyBytes", *deployerId, *deployerPubKeyBytesCh) |
+                  for (@deployerPubKeyBytes <- deployerPubKeyBytesCh) {
+                    RevAddress!("fromPublicKey", deployerPubKeyBytes, *revAddrCh) |
+                    for (@deployerRevAddress <- revAddrCh) {
+                      new vaultCh, revVaultkeyCh in {
+                        @RevVault!("findOrCreate", deployerRevAddress, *vaultCh) |
+                        @RevVault!("deployerAuthKey", *deployerId, *revVaultkeyCh) |
+                        for (@(true, vault) <- vaultCh; key <- revVaultkeyCh) {
+                          // TODO: if the amount is below 10 REV, won't trigger.
+                          new resultCh, ackCh, blockData(`rho:block:data`), tCh in {
+                            @vault!("transfer", revHouseAddr, amount, *key, *resultCh) |
+                            blockData!(*tCh) |
+                            for (@result <- resultCh; @_, @t, @_ <- tCh) {
+                              // TODO: If transfer failed,...
+                              _depositList!("deposit", deployerRevAddress, {"timestamp":t,"amount":amount}, *ackCh)|
+                              // send Bullet
+                              new createVault, bulletVaultCh, balanceCh, vaultCh, vaultCh, getVaultCh in {
+                                TreeHashMap!("get", bulletMap, deployerRevAddress, *getVaultCh) |
+                                for (@vault <- getVaultCh) {
+                                  if (vault != Nil) {
+                                    @vault!("balance", *balanceCh)| 
+                                    for (@balance <- balanceCh) {
+                                      _create!(deployerRevAddress, *createVault, *bulletVaultCh) |
+                                      for (vaultRetCh <- createVault) {
+                                        _makeVault!(deployerRevAddress, amount * 2 /100 + balance, *vaultRetCh) |
+                                        for (@eitherVault <- bulletVaultCh) {
+                                          retCh!(eitherVault)
+                                        }
+                                      }
+                                    }      
+                                  } else {
+                                    _create!(deployerRevAddress, *createVault, *bulletVaultCh) |
+                                    for (vaultRetCh <- createVault) {
+                                      _makeVault!(deployerRevAddress, amount * 2 /100, *vaultRetCh) |
+                                      for (@eitherVault <- bulletVaultCh) {
+                                        retCh!(eitherVault)
+                                      }
+                                    }  
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  } 
+                }       
+              } |
+
+              contract BulletVault(@"withdraw", retCh) = {
+                new DeployerIdOps(`rho:rchain:deployerId:ops`),
+                    revAddrCh, deployerPubKeyBytesCh, RevVaultCh, deployerId(`rho:rchain:deployerId`), getBalanceCh  
+                in {
+                  DeployerIdOps!("pubKeyBytes", *deployerId, *deployerPubKeyBytesCh) |
+                  for (@deployerPubKeyBytes <- deployerPubKeyBytesCh) {
+                    RevAddress!("fromPublicKey", deployerPubKeyBytes, *revAddrCh) |
+                    for (@deployerRevAddress <- revAddrCh) {                         
+                      _depositList!("withdraw", deployerRevAddress, *retCh)
+                    }        
+                  }
+                } 
+              } |  
+
+              contract _depositList(@"deposit", @deployerRevAddress, @item, ackCh) = {
+                new listCh in {
+                  TreeHashMap!("get", revMap, deployerRevAddress, *listCh) |
+                  for (@list <- listCh) {
+                    if(list == Nil) {
+                      TreeHashMap!("set", revMap, deployerRevAddress, [item], *ackCh) 
+                    }else{
+                      TreeHashMap!("set", revMap, deployerRevAddress, list ++ [item], *ackCh) 
+                    }
+
+                  }                
+                }  
+              } |
+
+              contract _depositList(@"withdraw", @deployerRevAddress, retCh) = {
+                new blockData(`rho:block:data`), tCh, _remove, liCh, ret in {
+                  blockData!(*tCh) |
+                  TreeHashMap!("get", revMap, deployerRevAddress, *liCh) |
+                  for (@_, @t, @_ <- tCh; @li <- liCh) {
+                    if (li == [] or li == Nil) {
+                      deployId!("No record found!")
+                    } else{
+                      _remove!(t, li, *ret)
+                      |deployId!(["list: ", li])
+                    }
+                  }|
+                  contract _remove (newTimeStamp, items, ret) = {
+                    new resultCh, ack, removeAck in {
+                      if(*items != []){
+                        if (*items.nth(0).get("timestamp") < (*newTimeStamp - 200000)) {
+                          @revHouseVault!("transfer", deployerRevAddress, *items.nth(0).get("amount"), revHouseVaultAuthKey, *resultCh) |
+                          for (@res <- resultCh) {
+                            TreeHashMap!("set", revMap, deployerRevAddress, *items.slice(1,*items.length()), *ack) |
+                            for (@ackn <- ack) {
+                              _remove!( *newTimeStamp, *items.slice(1,*items.length()), *removeAck)|
+                              ret!(true)
+                              |
+                              new re1 in {
+                                TreeHashMap!("get", revMap, deployerRevAddress, *re1) |
+                                for (@r <- re1) {
+                                  deployId!(["The removing result: ", r])
+                                }
+                              }  
+                            }
+                          }
+                        }else{
+                          ret!(true)|
+                          retCh!(true)|
+                          new re in {
+                            TreeHashMap!("get", revMap, deployerRevAddress, *re) |
+                            for (@lis <- re) {
+                                deployId!(["Final result:", lis])
+                              }
+                          }    
+                        } 
+                      }                      
+                    }       
+                  }  
+                }
+              } |  
+              contract _create(@revAddress, constructor, retCh) = {
+                // The vault was not found, create a new one and set it in the bulletMap.
+                new resCh, ackCh, ackCh2 in {
+                  constructor!(*resCh) |
+                  for (@eitherVault <- resCh) {
+                    match eitherVault {
+                      (true, vault) => {
+                        TreeHashMap!("set", bulletMap, revAddress, vault, *ackCh) |
+                        for (_ <- ackCh; _ <- ackCh2) {
+                          retCh!(eitherVault)
+                        }
+                      }
+                      (false, _)    => {
+                        retCh!(eitherVault)
+                      }
+                    }
+                  }
+                }
+              } |
+              contract _makeVault(@ownerRevAddress, @initialAmount, ret) = {
+                new revAddrCh, eitherRevAddrCh, purseCh, eitherPurseCh, mkVault in {
+                  @Either!("fromNillable", ownerRevAddress, "Required `revAddress` parameter was Nil", *eitherRevAddrCh) |
+                  mint!("makePurse", initialAmount, *purseCh) |
+                  @Either!("fromNillable <-", *purseCh, "Couldn't create purse", *eitherPurseCh) |
+                  @Either!("map2 <-", *eitherRevAddrCh, *eitherPurseCh,
+                    for (@addr, purse, r <- mkVault) {
+                      new bulletVault in {
+                        _newVault!(*bulletVault, addr, *purse) |
+                        r!(bundle+{*bulletVault})
+                      }
+                    },
+                    *ret
+                  )
+                }
+              } |
+              contract _newVault(bulletVault, @ownRevAddress, purse) = {
+                new logStore in {
+                  logStore!(Nil) |
+                  contract bulletVault(@"balance", ret) = {
+                    purse!("getBalance", *ret)
+                  } |
+                  contract bulletVault(@"transfer", @revAddress, @amount, authKey, ret) = {
+                    new ret2 in {
+                      _transferTemplate!(ownRevAddress, *purse, revAddress, amount, *authKey, *ret2) |
+                      for (@result <- ret2) {
+                        ret!(result) |
+                        for (logCh <<- logStore) {
+                          if (Nil != *logCh) {
+                            new bd(`rho:block:data`), bdCh in {
+                              bd!(*bdCh) |
+                              for (@blockNumber, @timestamp, @sender <- bdCh) {
+                                logCh!(["transfer", revAddress, amount, result, blockNumber, timestamp, sender])
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  } |
+                  contract bulletVault(@"setLog", logCh, authKey, ret) = {
+                    new authKeyValidCh in {
+                      @AuthKey!("check", *authKey, (*_bulletVault, ownRevAddress), *authKeyValidCh) |
+                      for (@result <- authKeyValidCh) {
+                        if (result) {
+                          new ack in {
+                            for (_ <- logStore) {
+                              logStore!(*logCh) |
+                              purse!("setLog", *logCh, *ack) |
+                              for (_ <- ack) {
+                                ret!(true)
+                              }
+                            }
+                          }
+                        } else {
+                          ret!(false)
+                        }
+                      }
+                    }
+                  } |
+                  contract @{ownRevAddress | bundle0{*_bulletVault}}(@"_deposit", depositPurse, retCh) = {
+                    _depositTemplate!(*purse, *depositPurse, *retCh)
+                  }
+                }
+              } |
+              contract _transferTemplate(@ownRevAddress, purse, @revAddress, @amount, authKey, ret) = {
+                new revAddressValid, revAddressValidEither, amountNonNegative,
+                    authKeyValidCh, authKeyValidEitherCh,
+                    parametersOkCh, parametersAndAuthOkCh,
+                    split, eitherPurseCh, doDeposit
+                in {
+                  RevAddress!("validate", revAddress, *revAddressValid) |
+                  @Either!("fromNillableError <-", *revAddressValid, *revAddressValidEither) |
+                  @Either!("fromBoolean", amount >= 0, "Amount must be non-negative", *amountNonNegative) |
+                  @AuthKey!("check", *authKey, (*_bulletVault, ownRevAddress), *authKeyValidCh) |
+                  @Either!("fromBoolean <-", *authKeyValidCh, "Invalid AuthKey", *authKeyValidEitherCh) |
+                  @Either!("productR <-", *revAddressValidEither, *amountNonNegative, *parametersOkCh) |
+                  @Either!("productR <-", *parametersOkCh, *authKeyValidEitherCh, *parametersAndAuthOkCh) |
+                  @Either!("flatMap <-", *parametersAndAuthOkCh, *split, *eitherPurseCh) |
+                  for (_, retCh <- split) {
+                    new amountPurseCh in {
+                      purse!("split", amount, *amountPurseCh) |
+                      @Either!("fromSingletonList <-", *amountPurseCh, "Insufficient funds", *retCh)
+                    }
+                  } |
+                  @Either!("flatMap <-", *eitherPurseCh, *doDeposit, *ret) |
+                  for (@p, retCh <- doDeposit) {
+                    @{revAddress | bundle0{*_bulletVault}}!("_deposit", p, *retCh)
+                  }
+                }
+              } |
+              contract _depositTemplate(toPurse, fromPurse, retCh) = {
+                new amountCh, depositSuccessCh in {
+                  fromPurse!("getBalance", *amountCh) |
+                  for (@amount <- amountCh) {
+                    toPurse!("deposit", amount, *fromPurse, *depositSuccessCh) |
+                    @Either!("fromBoolean <-", *depositSuccessCh, "BUG FOUND: purse deposit failed", *retCh)
+                  }
+                }
+              } 
+              |
+              insertArbitrary!(bundle+{*BulletVault}, *uriOut) |
+              for(@uri <- uriOut) {
+                //deployId!(uri) |
+                stdout!(uri)
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}      , Sig: 304402202e68453f1e53...1e4e3fb4821d1f2d9ffd, SigAlgorithm: secp256k1, ValidAfterBlockNumber: -1
+2023-11-15 14:03:03,731 [DEBUG] [c-nio-worker-ELG-3-1] [io.perfmark.PerfMark         ]- Error during PerfMark.<clinit>
+java.lang.ClassNotFoundException: io.perfmark.impl.SecretPerfMarkImpl$PerfMarkImpl
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:581)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:527)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:315)
+	at io.perfmark.PerfMark.<clinit>(PerfMark.java:36)
+	at io.grpc.netty.NettyServerStream$TransportState.<init>(NettyServerStream.java:225)
+	at io.grpc.netty.NettyServerHandler.onHeadersRead(NettyServerHandler.java:439)
+	at io.grpc.netty.NettyServerHandler.access$900(NettyServerHandler.java:101)
+	at io.grpc.netty.NettyServerHandler$FrameListener.onHeadersRead(NettyServerHandler.java:813)
+	at io.netty.handler.codec.http2.DefaultHttp2ConnectionDecoder$FrameReadListener.onHeadersRead(DefaultHttp2ConnectionDecoder.java:373)
+	at io.netty.handler.codec.http2.DefaultHttp2ConnectionDecoder$FrameReadListener.onHeadersRead(DefaultHttp2ConnectionDecoder.java:321)
+	at io.netty.handler.codec.http2.DefaultHttp2ConnectionDecoder$PrefaceFrameListener.onHeadersRead(DefaultHttp2ConnectionDecoder.java:665)
+	at io.netty.handler.codec.http2.Http2InboundFrameLogger$1.onHeadersRead(Http2InboundFrameLogger.java:56)
+	at io.netty.handler.codec.http2.DefaultHttp2FrameReader$2.processFragment(DefaultHttp2FrameReader.java:483)
+	at io.netty.handler.codec.http2.DefaultHttp2FrameReader.readHeadersFrame(DefaultHttp2FrameReader.java:491)
+	at io.netty.handler.codec.http2.DefaultHttp2FrameReader.processPayloadState(DefaultHttp2FrameReader.java:254)
+	at io.netty.handler.codec.http2.DefaultHttp2FrameReader.readFrame(DefaultHttp2FrameReader.java:160)
+	at io.netty.handler.codec.http2.Http2InboundFrameLogger.readFrame(Http2InboundFrameLogger.java:41)
+	at io.netty.handler.codec.http2.DefaultHttp2ConnectionDecoder.decodeFrame(DefaultHttp2ConnectionDecoder.java:174)
+	at io.netty.handler.codec.http2.Http2ConnectionHandler$FrameDecoder.decode(Http2ConnectionHandler.java:378)
+	at io.netty.handler.codec.http2.Http2ConnectionHandler$PrefaceDecoder.decode(Http2ConnectionHandler.java:242)
+	at io.netty.handler.codec.http2.Http2ConnectionHandler.decode(Http2ConnectionHandler.java:438)
+	at io.netty.handler.codec.ByteToMessageDecoder.decodeRemovalReentryProtection(ByteToMessageDecoder.java:498)
+	at io.netty.handler.codec.ByteToMessageDecoder.callDecode(ByteToMessageDecoder.java:437)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:276)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1410)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:919)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:163)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:714)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:576)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:493)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+2023-11-15 14:03:03,756 [INFO ] [node-runner-18      ] [c.r.n.i.ProposerInstance$    ]- Propose started
+2023-11-15 14:03:04,547 [INFO ] [node-runner-25      ] [c.r.c.b.proposer.Proposer    ]- getCasperSnapshot [786.539947 ms]
+2023-11-15 14:03:04,555 [INFO ] [node-runner-27      ] [alizedHeightConstraintChecker]- Latest message is 0 blocks ahead of the last finalized block
+2023-11-15 14:03:04,568 [INFO ] [node-runner-29      ] [c.r.c.b.p.BlockCreator$      ]- Creating block #1 (seqNum 1)
+2023-11-15 14:03:04,657 [INFO ] [node-runner-24      ] [c.r.casper.rholang.RuntimeOps]- PreCharging 04be064356846e36e485408df50b877dd99ba406d87208add4c92b3c7d4e4c663c2fbc6a1e6534c7e5c0aec00b26486fad1daf20079423b7c8ebffbbdff3682b58 for 100000000
+2023-11-15 14:03:06,685 [DEBUG] [node-runner-26      ] [coop.rchain.rholang.stdout   ]- `rho:id:7ikbnf4s9odmzd88rh6k8wyojb3zsk13mbohsgmnpdwqbqmfnjbcbu`
+2023-11-15 14:03:06,691 [INFO ] [node-runner-26      ] [c.r.casper.rholang.RuntimeOps]- Refunding 04be064356846e36e485408df50b877dd99ba406d87208add4c92b3c7d4e4c663c2fbc6a1e6534c7e5c0aec00b26486fad1daf20079423b7c8ebffbbdff3682b58 with 99374830
+2023-11-15 14:03:07,835 [INFO ] [node-runner-25      ] [c.r.c.b.p.BlockCreator$      ]- Block created: #1 (f536ce5c50...) (1d) [3.267328761 sec]
+2023-11-15 14:03:07,844 [INFO ] [node-runner-25      ] [c.r.c.MultiParentCasperImpl  ]- Validating block #1 (f536ce5c50...).
+2023-11-15 14:03:07,952 [INFO ] [node-runner-25      ] [c.r.c.u.r.InterpreterUtil$   ]- Computed parents post state for Block #1 (f536ce5c50...) -- Sender ID 042e13eadc... -- M Parent Hash 07958bcf85... -- Contents 66dbd52c7d...-- Shard ID root.
+2023-11-15 14:03:09,768 [DEBUG] [node-runner-29      ] [coop.rchain.rholang.stdout   ]- `rho:id:7ikbnf4s9odmzd88rh6k8wyojb3zsk13mbohsgmnpdwqbqmfnjbcbu`
+2023-11-15 14:03:10,600 [INFO ] [node-runner-25      ] [c.r.c.EquivocationDetector$  ]- Calculate checkNeglectedEquivocationsWithUpdate
+2023-11-15 14:03:10,605 [INFO ] [node-runner-25      ] [c.r.c.EquivocationDetector$  ]- Calculate checkEquivocations.
+2023-11-15 14:03:10,607 [INFO ] [node-runner-25      ] [c.r.c.MultiParentCasperImpl  ]- Block replayed: #1 (f536ce5c50...) (1d) (Valid) [2.762204494 sec]
+2023-11-15 14:03:11,064 [INFO ] [node-runner-25      ] [c.r.c.MultiParentCasperImpl  ]- Removed 0 deploys from deploy history as we finalized block [07958bcf85...].
+2023-11-15 14:03:11,077 [INFO ] [node-runner-25      ] [.r.c.e.BlockRetriever$$anon$1]- Block f536ce5c50... is not in RequestedBlocks. Adding and marking recieved.
+2023-11-15 14:03:11,081 [INFO ] [node-runner-25      ] [c.r.c.util.comm.CommUtilOps  ]- Sent hash f536ce5c50... to peers
+2023-11-15 14:03:11,089 [INFO ] [node-runner-27      ] [c.rchain.casper.api.BlockAPI$]- Success! Block f536ce5c502ae7c13738cadb9042f037111a0dc6b3f2886f8840be7b53e770f7 created and added.
+2023-11-15 14:03:11,092 [INFO ] [node-runner-25      ] [c.r.n.i.ProposerInstance$    ]- Propose finished: ProposeSuccess(Valid) Block #1 (f536ce5c50...) created and added.
+2023-11-15 14:03:30,237 [DEBUG] [node-runner-24      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:03:30,237 [DEBUG] [node-runner-24      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (1 items unexpired).
+2023-11-15 14:04:00,242 [DEBUG] [node-runner-29      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:04:00,243 [DEBUG] [node-runner-29      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (1 items unexpired).
+2023-11-15 14:04:05,243 [DEBUG] [node-runner-26      ] [c.r.c.safety.CliqueOracle$   ]- Calculating fault tolerance for f536ce5c502ae7c13738cadb9042f037111a0dc6b3f2886f8840be7b53e770f7.
+2023-11-15 14:04:05,299 [INFO ] [node-runner-26      ] [c.r.c.MultiParentCasperImpl  ]- Received DeployData #1700057045183 -- new userCh, print(`rho:io:stdout`), ret in {
+    contract @{"rl_factory"}(checkBalance, transfer, checkBulletBalance, depositForBullet) = {
+        contract checkBalance(addr, ret) = {
+            new rl(`rho:registry:lookup`), RevVaultCh, vaultCh, balanceCh in {
+                rl!(`rho:rchain:revVault`, *RevVaultCh) |
+                for (@(_, RevVault) <- RevVaultCh) {
+                    match *addr {
+                        revAddress => {
+                            print!(("Accessing vault at RevAddress", revAddress)) |
+                            @RevVault!("findOrCreate", revAddress, *vaultCh) |
+                            for (@(true, vault) <- vaultCh) {
+                                print!("Obtained vault, checking balance") |
+                                @vault!("balance", *balanceCh) |
+                                for (@balance <- balanceCh) {
+                                    ret!(balance)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        |
+        contract transfer(from, to, amount) = {
+            new rl(`rho:registry:lookup`), RevVaultCh in {
+                rl!(`rho:rchain:revVault`, *RevVaultCh) |
+                for (@(_, RevVault) <- RevVaultCh) {
+                    match (
+                        *from,
+                        *to,
+                        *amount
+                    ) {
+                        (from, to, amount) => {
+                            new vaultCh, targetVaultCh, revVaultkeyCh, deployerId(`rho:rchain:deployerId`) in {
+                                @RevVault!("findOrCreate", from, *vaultCh) |
+                                @RevVault!("findOrCreate", to, *targetVaultCh) |
+                                @RevVault!("deployerAuthKey", *deployerId, *revVaultkeyCh) |
+                                for (@(true, vault) <- vaultCh ; key <- revVaultkeyCh ; @(true, _) <- targetVaultCh) {
+                                    print!(("Beginning transfer of ", amount, "REV from", from, "to", to)) |
+                                    new resultCh in {
+                                        @vault!("transfer", to, amount, *key, *resultCh) |
+                                        for (@result <- resultCh) {
+                                            print!(("Finished transfer of ", amount, "REV to", to, "result was:", result))
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        |
+        contract checkBulletBalance(addr, ret) = {
+            new rl(`rho:registry:lookup`), BulletVaultCh, vaultCh, balanceCh, res in {
+                rl!(`rho:id:7ikbnf4s9odmzd88rh6k8wyojb3zsk13mbohsgmnpdwqbqmfnjbcbu`, *BulletVaultCh) |
+                for (@BulletVault <- BulletVaultCh) {
+                    print!("got message")|
+                    match *addr {
+                        revAddress => {
+                            print!(("Accessing vault at RevAddress", revAddress)) |
+                            @BulletVault!("findOrCreate", revAddress, *vaultCh) |
+                            @BulletVault!("test", *res)|
+                            for(@result <- vaultCh){
+                                print!(result)
+                            }|
+                            // @"BulletVault"!("findOrCreate", *addr, *vaultCh) |
+                            for (@(true, vault) <- vaultCh) {
+                                print!("Obtained vault, checking balance") |
+                                @vault!("balance", *balanceCh) |
+                                for (@balance <- balanceCh) {
+                                    print!("Bullet Balance is:",balance)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        |
+        contract depositForBullet(amount) = {
+            new rl(`rho:registry:lookup`), BulletVaultCh, retCh in {
+                rl!(`rho:id:twtuc9w1mrptu1sbtkzt6syzk4n88587afxmshcxk5qeff6dynspm9`, *BulletVaultCh) |
+                for (@BulletVault <- BulletVaultCh) {
+                    match *amount{
+                        amount => {
+                            @BulletVault!("deposit", amount, *retCh) |
+                            for (@result <- retCh) {
+                                print!(("Finished deposit, pay amount: ", amount, "result was:", result))
+                            }
+                            |
+                            print!("1")
+                        }
+                    }
+                }
+            }
+        }
+    }
+}, Sig: 3045022100acab70548e...e178ba6dc0e453375942, SigAlgorithm: secp256k1, ValidAfterBlockNumber: 1
+2023-11-15 14:04:05,317 [INFO ] [node-runner-23      ] [c.r.n.i.ProposerInstance$    ]- Propose started
+2023-11-15 14:04:05,575 [INFO ] [node-runner-23      ] [c.r.c.b.proposer.Proposer    ]- getCasperSnapshot [257.161376 ms]
+2023-11-15 14:04:05,577 [INFO ] [node-runner-25      ] [alizedHeightConstraintChecker]- Latest message is 1 blocks ahead of the last finalized block
+2023-11-15 14:04:05,767 [INFO ] [node-runner-18      ] [.c.SynchronyConstraintChecker]- Seen 0 senders with weight 0 out of total 100002000000 (0.0 out of 0.0 needed)
+2023-11-15 14:04:05,769 [INFO ] [node-runner-25      ] [c.r.c.b.p.BlockCreator$      ]- Creating block #2 (seqNum 2)
+2023-11-15 14:04:05,799 [INFO ] [node-runner-24      ] [c.r.casper.rholang.RuntimeOps]- PreCharging 04be064356846e36e485408df50b877dd99ba406d87208add4c92b3c7d4e4c663c2fbc6a1e6534c7e5c0aec00b26486fad1daf20079423b7c8ebffbbdff3682b58 for 100000000
+2023-11-15 14:04:06,293 [INFO ] [node-runner-37      ] [c.r.casper.rholang.RuntimeOps]- Refunding 04be064356846e36e485408df50b877dd99ba406d87208add4c92b3c7d4e4c663c2fbc6a1e6534c7e5c0aec00b26486fad1daf20079423b7c8ebffbbdff3682b58 with 99986191
+2023-11-15 14:04:07,181 [INFO ] [node-runner-29      ] [c.r.c.b.p.BlockCreator$      ]- Block created: #2 (fa03caa0fc...) (1d) [1.41211061 sec]
+2023-11-15 14:04:07,182 [INFO ] [node-runner-29      ] [c.r.c.MultiParentCasperImpl  ]- Validating block #2 (fa03caa0fc...).
+2023-11-15 14:04:07,208 [INFO ] [node-runner-29      ] [c.r.c.u.r.InterpreterUtil$   ]- Computed parents post state for Block #2 (fa03caa0fc...) -- Sender ID 042e13eadc... -- M Parent Hash f536ce5c50... -- Contents fdd10593d8...-- Shard ID root.
+2023-11-15 14:04:08,457 [INFO ] [node-runner-18      ] [c.r.c.EquivocationDetector$  ]- Calculate checkNeglectedEquivocationsWithUpdate
+2023-11-15 14:04:08,458 [INFO ] [node-runner-18      ] [c.r.c.EquivocationDetector$  ]- Calculate checkEquivocations.
+2023-11-15 14:04:08,458 [INFO ] [node-runner-18      ] [c.r.c.MultiParentCasperImpl  ]- Block replayed: #2 (fa03caa0fc...) (1d) (Valid) [1.276161327 sec]
+2023-11-15 14:04:08,616 [INFO ] [node-runner-26      ] [c.r.c.MultiParentCasperImpl  ]- Removed 0 deploys from deploy history as we finalized block [07958bcf85...].
+2023-11-15 14:04:08,623 [INFO ] [node-runner-26      ] [.r.c.e.BlockRetriever$$anon$1]- Block fa03caa0fc... is not in RequestedBlocks. Adding and marking recieved.
+2023-11-15 14:04:08,624 [INFO ] [node-runner-26      ] [c.r.c.util.comm.CommUtilOps  ]- Sent hash fa03caa0fc... to peers
+2023-11-15 14:04:08,626 [INFO ] [node-runner-27      ] [c.rchain.casper.api.BlockAPI$]- Success! Block fa03caa0fcf88ace60ded9768f90e8441f26c932b49f084cf82eed79e286b956 created and added.
+2023-11-15 14:04:08,627 [INFO ] [node-runner-26      ] [c.r.n.i.ProposerInstance$    ]- Propose finished: ProposeSuccess(Valid) Block #2 (fa03caa0fc...) created and added.
+2023-11-15 14:04:30,245 [DEBUG] [node-runner-26      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:04:30,246 [DEBUG] [node-runner-26      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (2 items unexpired).
+2023-11-15 14:04:30,755 [DEBUG] [node-runner-29      ] [c.r.c.safety.CliqueOracle$   ]- Calculating fault tolerance for fa03caa0fcf88ace60ded9768f90e8441f26c932b49f084cf82eed79e286b956.
+2023-11-15 14:04:30,845 [INFO ] [node-runner-18      ] [c.r.c.MultiParentCasperImpl  ]- Received DeployData #1700057070696 -- new userCh, checkBalance, transfer, ret, checkBulletBalance, depositForBullet in {
+                        @{"rl_factory"}!(*checkBalance, *transfer, *checkBulletBalance, *depositForBullet)
+                        |
+                        checkBalance!("11112wLhZbiuwRetHnzSESkE6BxbUaYzUF4qHcqihUbiA3zthCmoCN", *ret)
+                    }, Sig: 304402201fec409b2110...64c51292082796133463, SigAlgorithm: secp256k1, ValidAfterBlockNumber: 2
+2023-11-15 14:04:30,865 [INFO ] [node-runner-24      ] [c.r.n.i.ProposerInstance$    ]- Propose started
+2023-11-15 14:04:31,094 [INFO ] [node-runner-27      ] [c.r.c.b.proposer.Proposer    ]- getCasperSnapshot [228.542138 ms]
+2023-11-15 14:04:31,096 [INFO ] [node-runner-23      ] [alizedHeightConstraintChecker]- Latest message is 2 blocks ahead of the last finalized block
+2023-11-15 14:04:31,268 [INFO ] [node-runner-18      ] [.c.SynchronyConstraintChecker]- Seen 0 senders with weight 0 out of total 100002000000 (0.0 out of 0.0 needed)
+2023-11-15 14:04:31,269 [INFO ] [node-runner-18      ] [c.r.c.b.p.BlockCreator$      ]- Creating block #3 (seqNum 3)
+2023-11-15 14:04:31,296 [INFO ] [node-runner-27      ] [c.r.casper.rholang.RuntimeOps]- PreCharging 04be064356846e36e485408df50b877dd99ba406d87208add4c92b3c7d4e4c663c2fbc6a1e6534c7e5c0aec00b26486fad1daf20079423b7c8ebffbbdff3682b58 for 100000000
+2023-11-15 14:04:32,003 [DEBUG] [node-runner-18      ] [coop.rchain.rholang.stdout   ]- ("Accessing vault at RevAddress", "11112wLhZbiuwRetHnzSESkE6BxbUaYzUF4qHcqihUbiA3zthCmoCN")
+2023-11-15 14:04:32,232 [DEBUG] [node-runner-37      ] [coop.rchain.rholang.stdout   ]- "Obtained vault, checking balance"
+2023-11-15 14:04:32,239 [INFO ] [node-runner-24      ] [c.r.casper.rholang.RuntimeOps]- Refunding 04be064356846e36e485408df50b877dd99ba406d87208add4c92b3c7d4e4c663c2fbc6a1e6534c7e5c0aec00b26486fad1daf20079423b7c8ebffbbdff3682b58 with 99860437
+2023-11-15 14:04:33,134 [INFO ] [node-runner-29      ] [c.r.c.b.p.BlockCreator$      ]- Block created: #3 (090b071f74...) (1d) [1.864781653 sec]
+2023-11-15 14:04:33,135 [INFO ] [node-runner-29      ] [c.r.c.MultiParentCasperImpl  ]- Validating block #3 (090b071f74...).
+2023-11-15 14:04:33,171 [INFO ] [node-runner-29      ] [c.r.c.u.r.InterpreterUtil$   ]- Computed parents post state for Block #3 (090b071f74...) -- Sender ID 042e13eadc... -- M Parent Hash fa03caa0fc... -- Contents aa7689a79f...-- Shard ID root.
+2023-11-15 14:04:33,809 [DEBUG] [node-runner-23      ] [coop.rchain.rholang.stdout   ]- ("Accessing vault at RevAddress", "11112wLhZbiuwRetHnzSESkE6BxbUaYzUF4qHcqihUbiA3zthCmoCN")
+2023-11-15 14:04:34,064 [DEBUG] [node-runner-29      ] [coop.rchain.rholang.stdout   ]- "Obtained vault, checking balance"
+2023-11-15 14:04:34,763 [INFO ] [node-runner-27      ] [c.r.c.EquivocationDetector$  ]- Calculate checkNeglectedEquivocationsWithUpdate
+2023-11-15 14:04:34,764 [INFO ] [node-runner-27      ] [c.r.c.EquivocationDetector$  ]- Calculate checkEquivocations.
+2023-11-15 14:04:34,765 [INFO ] [node-runner-27      ] [c.r.c.MultiParentCasperImpl  ]- Block replayed: #3 (090b071f74...) (1d) (Valid) [1.629394567 sec]
+2023-11-15 14:04:34,933 [INFO ] [node-runner-24      ] [c.r.c.MultiParentCasperImpl  ]- Removed 0 deploys from deploy history as we finalized block [07958bcf85...].
+2023-11-15 14:04:34,939 [INFO ] [node-runner-24      ] [.r.c.e.BlockRetriever$$anon$1]- Block 090b071f74... is not in RequestedBlocks. Adding and marking recieved.
+2023-11-15 14:04:34,939 [INFO ] [node-runner-24      ] [c.r.c.util.comm.CommUtilOps  ]- Sent hash 090b071f74... to peers
+2023-11-15 14:04:34,940 [INFO ] [node-runner-29      ] [c.rchain.casper.api.BlockAPI$]- Success! Block 090b071f7455ddbd9587ac2c52dc1be0f94c6f11163aaf93929b293b33e36ee1 created and added.
+2023-11-15 14:04:34,941 [INFO ] [node-runner-24      ] [c.r.n.i.ProposerInstance$    ]- Propose finished: ProposeSuccess(Valid) Block #3 (090b071f74...) created and added.
+2023-11-15 14:04:40,004 [DEBUG] [node-runner-23      ] [c.r.c.safety.CliqueOracle$   ]- Calculating fault tolerance for 090b071f7455ddbd9587ac2c52dc1be0f94c6f11163aaf93929b293b33e36ee1.
+2023-11-15 14:04:40,079 [DEBUG] [node-runner-23      ] [c.r.c.safety.CliqueOracle$   ]- Calculating fault tolerance for 090b071f7455ddbd9587ac2c52dc1be0f94c6f11163aaf93929b293b33e36ee1.
+2023-11-15 14:04:40,108 [INFO ] [node-runner-24      ] [c.r.c.MultiParentCasperImpl  ]- Received DeployData #1700057080030 -- new userCh, checkBalance, transfer, ret, checkBulletBalance, depositForBullet in {
+                            @{"rl_factory"}!(*checkBalance, *transfer, *checkBulletBalance, *depositForBullet)
+                            |
+                            checkBulletBalance!("11112wLhZbiuwRetHnzSESkE6BxbUaYzUF4qHcqihUbiA3zthCmoCN", *ret)
+                        }, Sig: 304402203ce8b4d3c833...a5f29ca0147eb2e4fe69, SigAlgorithm: secp256k1, ValidAfterBlockNumber: 3
+2023-11-15 14:04:40,118 [INFO ] [node-runner-25      ] [c.r.n.i.ProposerInstance$    ]- Propose started
+2023-11-15 14:04:40,378 [INFO ] [node-runner-26      ] [c.r.c.b.proposer.Proposer    ]- getCasperSnapshot [260.037128 ms]
+2023-11-15 14:04:40,380 [INFO ] [node-runner-29      ] [alizedHeightConstraintChecker]- Latest message is 3 blocks ahead of the last finalized block
+2023-11-15 14:04:40,579 [INFO ] [node-runner-26      ] [.c.SynchronyConstraintChecker]- Seen 0 senders with weight 0 out of total 100002000000 (0.0 out of 0.0 needed)
+2023-11-15 14:04:40,580 [INFO ] [node-runner-27      ] [c.r.c.b.p.BlockCreator$      ]- Creating block #4 (seqNum 4)
+2023-11-15 14:04:40,613 [INFO ] [node-runner-18      ] [c.r.casper.rholang.RuntimeOps]- PreCharging 04be064356846e36e485408df50b877dd99ba406d87208add4c92b3c7d4e4c663c2fbc6a1e6534c7e5c0aec00b26486fad1daf20079423b7c8ebffbbdff3682b58 for 100000000
+2023-11-15 14:04:41,346 [DEBUG] [node-runner-25      ] [coop.rchain.rholang.stdout   ]- "got message"
+2023-11-15 14:04:41,348 [DEBUG] [node-runner-18      ] [coop.rchain.rholang.stdout   ]- ("Accessing vault at RevAddress", "11112wLhZbiuwRetHnzSESkE6BxbUaYzUF4qHcqihUbiA3zthCmoCN")
+2023-11-15 14:04:41,396 [DEBUG] [node-runner-26      ] [coop.rchain.rholang.stdout   ]- "111"
+2023-11-15 14:04:41,631 [INFO ] [node-runner-23      ] [c.r.casper.rholang.RuntimeOps]- Refunding 04be064356846e36e485408df50b877dd99ba406d87208add4c92b3c7d4e4c663c2fbc6a1e6534c7e5c0aec00b26486fad1daf20079423b7c8ebffbbdff3682b58 with 99860970
+2023-11-15 14:04:42,726 [INFO ] [node-runner-25      ] [c.r.c.b.p.BlockCreator$      ]- Block created: #4 (1103aa7f96...) (1d) [2.145572284 sec]
+2023-11-15 14:04:42,727 [INFO ] [node-runner-25      ] [c.r.c.MultiParentCasperImpl  ]- Validating block #4 (1103aa7f96...).
+2023-11-15 14:04:42,752 [INFO ] [node-runner-25      ] [c.r.c.u.r.InterpreterUtil$   ]- Computed parents post state for Block #4 (1103aa7f96...) -- Sender ID 042e13eadc... -- M Parent Hash 090b071f74... -- Contents 7989024986...-- Shard ID root.
+2023-11-15 14:04:43,340 [DEBUG] [node-runner-26      ] [coop.rchain.rholang.stdout   ]- "got message"
+2023-11-15 14:04:43,341 [DEBUG] [node-runner-37      ] [coop.rchain.rholang.stdout   ]- ("Accessing vault at RevAddress", "11112wLhZbiuwRetHnzSESkE6BxbUaYzUF4qHcqihUbiA3zthCmoCN")
+2023-11-15 14:04:43,384 [DEBUG] [node-runner-27      ] [coop.rchain.rholang.stdout   ]- "111"
+2023-11-15 14:04:44,334 [INFO ] [node-runner-29      ] [c.r.c.EquivocationDetector$  ]- Calculate checkNeglectedEquivocationsWithUpdate
+2023-11-15 14:04:44,335 [INFO ] [node-runner-29      ] [c.r.c.EquivocationDetector$  ]- Calculate checkEquivocations.
+2023-11-15 14:04:44,335 [INFO ] [node-runner-29      ] [c.r.c.MultiParentCasperImpl  ]- Block replayed: #4 (1103aa7f96...) (1d) (Valid) [1.607919064 sec]
+2023-11-15 14:04:44,500 [INFO ] [node-runner-23      ] [c.r.c.MultiParentCasperImpl  ]- Removed 0 deploys from deploy history as we finalized block [07958bcf85...].
+2023-11-15 14:04:44,506 [INFO ] [node-runner-23      ] [.r.c.e.BlockRetriever$$anon$1]- Block 1103aa7f96... is not in RequestedBlocks. Adding and marking recieved.
+2023-11-15 14:04:44,507 [INFO ] [node-runner-23      ] [c.r.c.util.comm.CommUtilOps  ]- Sent hash 1103aa7f96... to peers
+2023-11-15 14:04:44,507 [INFO ] [node-runner-27      ] [c.rchain.casper.api.BlockAPI$]- Success! Block 1103aa7f969b46af4344972a5036acf4a80ba745d8f470920acb3446164069ee created and added.
+2023-11-15 14:04:44,507 [INFO ] [node-runner-23      ] [c.r.n.i.ProposerInstance$    ]- Propose finished: ProposeSuccess(Valid) Block #4 (1103aa7f96...) created and added.
+2023-11-15 14:05:00,247 [DEBUG] [node-runner-26      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:05:00,248 [DEBUG] [node-runner-26      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (4 items unexpired).
+2023-11-15 14:05:30,249 [DEBUG] [node-runner-37      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:05:30,250 [DEBUG] [node-runner-37      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (4 items unexpired).
+2023-11-15 14:06:00,251 [DEBUG] [node-runner-18      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:06:00,251 [DEBUG] [node-runner-18      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (4 items unexpired).
+2023-11-15 14:06:30,253 [DEBUG] [node-runner-24      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:06:30,253 [DEBUG] [node-runner-24      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (4 items unexpired).
+2023-11-15 14:07:00,255 [DEBUG] [node-runner-26      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:07:00,255 [DEBUG] [node-runner-26      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (4 items unexpired).
+2023-11-15 14:07:30,256 [DEBUG] [node-runner-27      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:07:30,257 [DEBUG] [node-runner-27      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (4 items unexpired).
+2023-11-15 14:08:00,259 [DEBUG] [node-runner-24      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:08:00,259 [DEBUG] [node-runner-24      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (3 items unexpired).
+2023-11-15 14:08:30,262 [DEBUG] [node-runner-29      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:08:30,262 [DEBUG] [node-runner-29      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (3 items unexpired).
+2023-11-15 14:09:00,264 [DEBUG] [node-runner-37      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:09:00,264 [DEBUG] [node-runner-37      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (2 items unexpired).
+2023-11-15 14:09:30,266 [DEBUG] [node-runner-37      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:09:30,266 [DEBUG] [node-runner-37      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 14:10:00,267 [DEBUG] [node-runner-27      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:10:00,267 [DEBUG] [node-runner-27      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 14:10:30,269 [DEBUG] [node-runner-24      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:10:30,269 [DEBUG] [node-runner-24      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 14:11:00,270 [DEBUG] [node-runner-27      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:11:00,270 [DEBUG] [node-runner-27      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 14:11:30,272 [DEBUG] [node-runner-26      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:11:30,272 [DEBUG] [node-runner-26      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 14:12:00,274 [DEBUG] [node-runner-25      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:12:00,274 [DEBUG] [node-runner-25      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 14:12:30,275 [DEBUG] [node-runner-23      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:12:30,276 [DEBUG] [node-runner-23      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 14:13:00,277 [DEBUG] [node-runner-27      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:13:00,278 [DEBUG] [node-runner-27      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 14:13:30,299 [DEBUG] [node-runner-23      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:13:30,299 [DEBUG] [node-runner-23      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 14:14:00,300 [DEBUG] [node-runner-24      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:14:00,301 [DEBUG] [node-runner-24      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 14:14:30,303 [DEBUG] [node-runner-23      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:14:30,303 [DEBUG] [node-runner-23      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 14:15:00,304 [DEBUG] [node-runner-25      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:15:00,304 [DEBUG] [node-runner-25      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 14:15:30,305 [DEBUG] [node-runner-37      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:15:30,306 [DEBUG] [node-runner-37      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 14:16:00,307 [DEBUG] [node-runner-37      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:16:00,307 [DEBUG] [node-runner-37      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 14:16:30,308 [DEBUG] [node-runner-18      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:16:30,308 [DEBUG] [node-runner-18      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 14:17:00,310 [DEBUG] [node-runner-18      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:17:00,310 [DEBUG] [node-runner-18      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 14:17:30,312 [DEBUG] [node-runner-18      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:17:30,312 [DEBUG] [node-runner-18      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 14:18:00,313 [DEBUG] [node-runner-25      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:18:00,313 [DEBUG] [node-runner-25      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 14:18:30,315 [DEBUG] [node-runner-25      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:18:30,316 [DEBUG] [node-runner-25      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 14:19:00,317 [DEBUG] [node-runner-24      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:19:00,317 [DEBUG] [node-runner-24      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 14:19:30,318 [DEBUG] [node-runner-29      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:19:30,319 [DEBUG] [node-runner-29      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 14:20:00,320 [DEBUG] [node-runner-18      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:20:00,320 [DEBUG] [node-runner-18      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 14:20:30,322 [DEBUG] [node-runner-27      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:20:30,322 [DEBUG] [node-runner-27      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 14:21:00,323 [DEBUG] [node-runner-27      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:21:00,323 [DEBUG] [node-runner-27      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 14:21:30,325 [DEBUG] [node-runner-27      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:21:30,325 [DEBUG] [node-runner-27      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 14:22:00,327 [DEBUG] [node-runner-24      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:22:00,328 [DEBUG] [node-runner-24      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 14:22:30,329 [DEBUG] [node-runner-27      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:22:30,329 [DEBUG] [node-runner-27      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 14:23:00,330 [DEBUG] [node-runner-25      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:23:00,331 [DEBUG] [node-runner-25      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 14:23:30,333 [DEBUG] [node-runner-18      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:23:30,333 [DEBUG] [node-runner-18      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 14:24:00,335 [DEBUG] [node-runner-18      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:24:00,335 [DEBUG] [node-runner-18      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 14:24:30,337 [DEBUG] [node-runner-23      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:24:30,337 [DEBUG] [node-runner-23      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 14:25:00,279 [INFO ] [node-runner-37      ] [c.r.casper.engine.Running$   ]- Requesting tips update as newest latest message is more then 10 minutes old. Might be network is faulty.
+2023-11-15 14:25:00,280 [INFO ] [node-runner-37      ] [c.r.c.util.comm.CommUtilOps  ]- Requested fork tip from peers
+2023-11-15 14:25:00,339 [DEBUG] [node-runner-18      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:25:00,339 [DEBUG] [node-runner-18      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 14:25:30,340 [DEBUG] [node-runner-23      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:25:30,340 [DEBUG] [node-runner-23      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 14:26:00,341 [DEBUG] [node-runner-27      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:26:00,342 [DEBUG] [node-runner-27      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 14:26:30,343 [DEBUG] [node-runner-18      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:26:30,343 [DEBUG] [node-runner-18      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 14:27:00,344 [DEBUG] [node-runner-23      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:27:00,344 [DEBUG] [node-runner-23      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 14:27:30,346 [DEBUG] [node-runner-26      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:27:30,346 [DEBUG] [node-runner-26      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 14:28:00,347 [DEBUG] [node-runner-29      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:28:00,347 [DEBUG] [node-runner-29      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 14:28:30,348 [DEBUG] [node-runner-29      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:28:30,349 [DEBUG] [node-runner-29      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 14:29:00,350 [DEBUG] [node-runner-23      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:29:00,351 [DEBUG] [node-runner-23      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 14:29:30,352 [DEBUG] [node-runner-27      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:29:30,352 [DEBUG] [node-runner-27      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 14:30:00,353 [DEBUG] [node-runner-27      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:30:00,354 [DEBUG] [node-runner-27      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 14:30:30,355 [DEBUG] [node-runner-37      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:30:30,355 [DEBUG] [node-runner-37      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 14:31:00,357 [DEBUG] [node-runner-18      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:31:00,357 [DEBUG] [node-runner-18      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 14:31:30,358 [DEBUG] [node-runner-29      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:31:30,359 [DEBUG] [node-runner-29      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 14:32:00,360 [DEBUG] [node-runner-27      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:32:00,361 [DEBUG] [node-runner-27      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 14:32:30,363 [DEBUG] [node-runner-24      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:32:30,363 [DEBUG] [node-runner-24      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 14:33:00,365 [DEBUG] [node-runner-24      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:33:00,365 [DEBUG] [node-runner-24      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 14:33:30,366 [DEBUG] [node-runner-24      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:33:30,366 [DEBUG] [node-runner-24      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 14:34:00,367 [DEBUG] [node-runner-23      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:34:00,368 [DEBUG] [node-runner-23      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 14:34:30,369 [DEBUG] [node-runner-27      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:34:30,369 [DEBUG] [node-runner-27      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 14:35:00,374 [DEBUG] [node-runner-25      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:35:00,375 [DEBUG] [node-runner-25      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 14:35:30,376 [DEBUG] [node-runner-23      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:35:30,376 [DEBUG] [node-runner-23      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 14:36:00,309 [INFO ] [node-runner-23      ] [c.r.casper.engine.Running$   ]- Requesting tips update as newest latest message is more then 10 minutes old. Might be network is faulty.
+2023-11-15 14:36:00,310 [INFO ] [node-runner-23      ] [c.r.c.util.comm.CommUtilOps  ]- Requested fork tip from peers
+2023-11-15 14:36:00,377 [DEBUG] [node-runner-23      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:36:00,378 [DEBUG] [node-runner-23      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 14:36:30,380 [DEBUG] [node-runner-29      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:36:30,380 [DEBUG] [node-runner-29      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 14:37:00,382 [DEBUG] [node-runner-29      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:37:00,382 [DEBUG] [node-runner-29      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 14:37:30,384 [DEBUG] [node-runner-18      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:37:30,384 [DEBUG] [node-runner-18      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 14:38:00,386 [DEBUG] [node-runner-18      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:38:00,386 [DEBUG] [node-runner-18      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 14:38:30,388 [DEBUG] [node-runner-18      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:38:30,389 [DEBUG] [node-runner-18      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 14:39:00,390 [DEBUG] [node-runner-27      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:39:00,391 [DEBUG] [node-runner-27      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 14:39:30,392 [DEBUG] [node-runner-18      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:39:30,392 [DEBUG] [node-runner-18      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 14:40:00,394 [DEBUG] [node-runner-37      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:40:00,395 [DEBUG] [node-runner-37      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 14:40:30,396 [DEBUG] [node-runner-26      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:40:30,397 [DEBUG] [node-runner-26      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 14:41:00,398 [DEBUG] [node-runner-26      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:41:00,398 [DEBUG] [node-runner-26      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 14:41:30,400 [DEBUG] [node-runner-29      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:41:30,401 [DEBUG] [node-runner-29      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 14:42:00,402 [DEBUG] [node-runner-27      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 14:42:00,403 [DEBUG] [node-runner-27      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 15:00:38,101 [DEBUG] [node-runner-23      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 15:00:38,101 [DEBUG] [node-runner-23      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).

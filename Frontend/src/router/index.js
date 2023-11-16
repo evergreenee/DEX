@@ -32,7 +32,7 @@ const routes = [
         children: [
             {
                 path:'',
-                redirect: 'home',
+                redirect: '/index/home',
             },
             {
                 path: 'home',
