@@ -6,14 +6,17 @@ const fs = require('fs');
 
 const PRIVATE_KEY = '28a5c9ac133b4449ca38e9bdf7cacdce31079ef6b3ac2f0a080af83ecff98b36';
 const PUBLIC_KEY = rchainToolkit.utils.publicKeyFromPrivateKey(PRIVATE_KEY);
-const READ_ONLY_HOST = 'http://localhost:40403';
-const VALIDATOR_HOST = 'http://localhost:40403';
+//const READ_ONLY_HOST = 'http://localhost:40403';
+const READ_ONLY_HOST = 'http://192.168.59.133:40403';
+//const VALIDATOR_HOST = 'http://localhost:40403';
+const VALIDATOR_HOST = 'http://192.168.59.133:40403';
 const SHARD_ID = 'root';
 
 const func_deploy = async (rho_code_, order_) => {
     const _timestamp = new Date().valueOf();
     const grpcClient = await rchainToolkit_grpc.getGrpcProposeClient(
-        "localhost:40402",
+        //"localhost:40402",
+        "192.168.59.133:40402",
         grpc,
         protoLoader
     );
@@ -29,7 +32,8 @@ const func_deploy = async (rho_code_, order_) => {
     console.log(pd + '\n');
 
     const _validAfterBlockNumber = await rchainToolkit.http.validAfterBlockNumber(
-        "http://localhost:40403"
+        //"http://localhost:40403"
+        "http://192.168.59.133:40403"
     );
     const deployOptions = rchainToolkit.utils.getDeployOptions(
     {
@@ -45,7 +49,8 @@ const func_deploy = async (rho_code_, order_) => {
     let deployResponse;
     try {
         deployResponse = await rchainToolkit.http.deploy(
-            "http://localhost:40403",
+            //"http://localhost:40403",
+            "http://192.168.59.133:40403",
             deployOptions
         );
     } catch (err) {

@@ -12,6 +12,7 @@ export const useUserStore = defineStore('userStore', {
             revAddr:null,
             balance:null,
             bulletBalance:null,
+            necBalance:null,
         }
     },
     persist: {

@@ -38,7 +38,7 @@ import { post } from '@/utils/request';
 
 const selectPay = ref(null);
 const selectGet = ref(null);
-const items = ref(['REV','Bullet']);
+const items = ref(['REV','Bullet','NEC']);
 const payAmount = ref('');
 const getAmount = ref('');
 

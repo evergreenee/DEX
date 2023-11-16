@@ -1,5 +1,5 @@
 new
-  BulletVault, rs(`rho:registry:insertSigned:secp256k1`), uriOut,
+  NecVault, rs(`rho:registry:insertSigned:secp256k1`), uriOut,
   rl(`rho:registry:lookup`), RevAddress(`rho:rev:address`),
   insertArbitrary(`rho:registry:insertArbitrary`),
   stdout(`rho:io:stdout`), deployId(`rho:rchain:deployId`),
@@ -7,7 +7,7 @@ new
   _makeVault,
   _newVault,
   _create,
-  _bulletVault,
+  _necVault,
   _transferTemplate,
   _depositTemplate
 in {
@@ -21,7 +21,7 @@ in {
        @(_, Either)   <- EitherCh;
        @(_, RevVault) <- RevVaultCh; 
        TreeHashMap    <- TreeHashMapCh) {
-    new mintCh, revMapStore, bulletMapStore, initVault, unf, authKeyCh, revHouseAddrCh in {
+    new mintCh, revMapStore, necMapStore, initVault, unf, authKeyCh, revHouseAddrCh in {
       // generate revHouse for holding deposited REV 
       RevAddress!("fromUnforgeable", *unf, *revHouseAddrCh) |
       @RevVault!("unforgeableAuthKey", *unf, *authKeyCh) |
@@ -31,9 +31,9 @@ in {
           deployId!(["revHouseAddr : ",revHouseAddr])|
           // mapstore for depositing REV
           TreeHashMap!("init", 2, *revMapStore) |
-          // mapstore for bullet token
-          TreeHashMap!("init", 2, *bulletMapStore)| 
-          for (@(true, revHouseVault) <- revHouseVaultCh; @revMap <- revMapStore; @bulletMap <- bulletMapStore) {
+          // mapstore for nec token
+          TreeHashMap!("init", 2, *necMapStore)| 
+          for (@(true, revHouseVault) <- revHouseVaultCh; @revMap <- revMapStore; @necMap <- necMapStore) {
             @MakeMint!(*mintCh) |
             for (mint <- mintCh) {
               contract initVault(name, @address, @initialAmount) = {
@@ -44,11 +44,11 @@ in {
                   }
                 }
               } |
-              contract BulletVault(@"test",res) = {
+              contract NecVault(@"test",res) = {
                 res!("test success")
               }
               |
-              contract BulletVault(@"deployerAuthKey", deployerId, ret) = {
+              contract NecVault(@"deployerAuthKey", deployerId, ret) = {
                 new DeployerIdOps(`rho:rchain:deployerId:ops`),
                     revAddrCh, deployerPubKeyBytesCh
                 in {
@@ -56,20 +56,20 @@ in {
                   for (@deployerPubKeyBytes <- deployerPubKeyBytesCh) {
                     RevAddress!("fromPublicKey", deployerPubKeyBytes, *revAddrCh) |
                     for (@deployerRevAddress <- revAddrCh) {
-                      @AuthKey!("make", (*_bulletVault, deployerRevAddress), *ret)
+                      @AuthKey!("make", (*_necVault, deployerRevAddress), *ret)
                     }
                   }
                 }
               } |
-              contract BulletVault(@"unforgeableAuthKey", unf, ret) = {
+              contract NecVault(@"unforgeableAuthKey", unf, ret) = {
                 new revAddrCh in {
                   RevAddress!("fromUnforgeable", *unf, *revAddrCh) |
                   for (@unfRevAddress <- revAddrCh) {
-                    @AuthKey!("make", (*_bulletVault, unfRevAddress), *ret)
+                    @AuthKey!("make", (*_necVault, unfRevAddress), *ret)
                   }
                 }
               } |
-              contract BulletVault(@"findOrCreate", @revAddress, retCh) = {
+              contract NecVault(@"findOrCreate", @revAddress, retCh) = {
                 new revAddressValidCh, revAddressValidEitherCh in {
                   RevAddress!("validate", revAddress, *revAddressValidCh) |
                   @Either!("fromNillableError <-", *revAddressValidCh, *revAddressValidEitherCh) |
@@ -80,7 +80,7 @@ in {
                       }
                       _ => {
                         new createVault, vaultCh, getVaultCh in {
-                          TreeHashMap!("get", bulletMap, revAddress, *getVaultCh) |
+                          TreeHashMap!("get", necMap, revAddress, *getVaultCh) |
                           for (@vault <- getVaultCh) {
                             if (vault != Nil) {
                               retCh!((true, vault))
@@ -101,7 +101,7 @@ in {
                 }
               } |
 
-              contract BulletVault(@"deposit", @amount, retCh) = {
+              contract NecVault(@"deposit", @amount, retCh) = {
                 new DeployerIdOps(`rho:rchain:deployerId:ops`),
                     revAddrCh, deployerPubKeyBytesCh, deployerId(`rho:rchain:deployerId`)  
                 in {
@@ -120,26 +120,26 @@ in {
                             for (@result <- resultCh; @_, @t, @_ <- tCh) {
                               // TODO: If transfer failed,...
                               _depositList!("deposit", deployerRevAddress, {"timestamp":t,"amount":amount}, *ackCh)|
-                              // send Bullet
-                              new createVault, bulletVaultCh, balanceCh, vaultCh, vaultCh, getVaultCh in {
-                                TreeHashMap!("get", bulletMap, deployerRevAddress, *getVaultCh) |
+                              // send NEC
+                              new createVault, necVaultCh, balanceCh, vaultCh, vaultCh, getVaultCh in {
+                                TreeHashMap!("get", necMap, deployerRevAddress, *getVaultCh) |
                                 for (@vault <- getVaultCh) {
                                   if (vault != Nil) {
                                     @vault!("balance", *balanceCh)| 
                                     for (@balance <- balanceCh) {
-                                      _create!(deployerRevAddress, *createVault, *bulletVaultCh) |
+                                      _create!(deployerRevAddress, *createVault, *necVaultCh) |
                                       for (vaultRetCh <- createVault) {
-                                        _makeVault!(deployerRevAddress, amount * 2 /100 + balance, *vaultRetCh) |
-                                        for (@eitherVault <- bulletVaultCh) {
+                                        _makeVault!(deployerRevAddress, amount / 100 + balance, *vaultRetCh) |
+                                        for (@eitherVault <- necVaultCh) {
                                           retCh!(eitherVault)
                                         }
                                       }
                                     }      
                                   } else {
-                                    _create!(deployerRevAddress, *createVault, *bulletVaultCh) |
+                                    _create!(deployerRevAddress, *createVault, *necVaultCh) |
                                     for (vaultRetCh <- createVault) {
-                                      _makeVault!(deployerRevAddress, amount * 2 /100, *vaultRetCh) |
-                                      for (@eitherVault <- bulletVaultCh) {
+                                      _makeVault!(deployerRevAddress, amount / 100, *vaultRetCh) |
+                                      for (@eitherVault <- necVaultCh) {
                                         retCh!(eitherVault)
                                       }
                                     }  
@@ -155,7 +155,7 @@ in {
                 }       
               } |
 
-              contract BulletVault(@"withdraw", retCh) = {
+              contract NecVault(@"withdraw", retCh) = {
                 new DeployerIdOps(`rho:rchain:deployerId:ops`),
                     revAddrCh, deployerPubKeyBytesCh, RevVaultCh, deployerId(`rho:rchain:deployerId`), getBalanceCh  
                 in {
@@ -230,13 +230,13 @@ in {
                 }
               } |  
               contract _create(@revAddress, constructor, retCh) = {
-                // The vault was not found, create a new one and set it in the bulletMap.
+                // The vault was not found, create a new one and set it in the necMap.
                 new resCh, ackCh in {
                   constructor!(*resCh) |
                   for (@eitherVault <- resCh) {
                     match eitherVault {
                       (true, vault) => {
-                        TreeHashMap!("set", bulletMap, revAddress, vault, *ackCh) |
+                        TreeHashMap!("set", necMap, revAddress, vault, *ackCh) |
                         for (_ <- ackCh) {
                           retCh!(eitherVault)
                         }
@@ -255,22 +255,22 @@ in {
                   @Either!("fromNillable <-", *purseCh, "Couldn't create purse", *eitherPurseCh) |
                   @Either!("map2 <-", *eitherRevAddrCh, *eitherPurseCh,
                     for (@addr, purse, r <- mkVault) {
-                      new bulletVault in {
-                        _newVault!(*bulletVault, addr, *purse) |
-                        r!(bundle+{*bulletVault})
+                      new necVault in {
+                        _newVault!(*necVault, addr, *purse) |
+                        r!(bundle+{*necVault})
                       }
                     },
                     *ret
                   )
                 }
               } |
-              contract _newVault(bulletVault, @ownRevAddress, purse) = {
+              contract _newVault(necVault, @ownRevAddress, purse) = {
                 new logStore in {
                   logStore!(Nil) |
-                  contract bulletVault(@"balance", ret) = {
+                  contract necVault(@"balance", ret) = {
                     purse!("getBalance", *ret)
                   } |
-                  contract bulletVault(@"transfer", @revAddress, @amount, authKey, ret) = {
+                  contract necVault(@"transfer", @revAddress, @amount, authKey, ret) = {
                     new ret2 in {
                       _transferTemplate!(ownRevAddress, *purse, revAddress, amount, *authKey, *ret2) |
                       for (@result <- ret2) {
@@ -288,9 +288,9 @@ in {
                       }
                     }
                   } |
-                  contract bulletVault(@"setLog", logCh, authKey, ret) = {
+                  contract necVault(@"setLog", logCh, authKey, ret) = {
                     new authKeyValidCh in {
-                      @AuthKey!("check", *authKey, (*_bulletVault, ownRevAddress), *authKeyValidCh) |
+                      @AuthKey!("check", *authKey, (*_necVault, ownRevAddress), *authKeyValidCh) |
                       for (@result <- authKeyValidCh) {
                         if (result) {
                           new ack in {
@@ -308,7 +308,7 @@ in {
                       }
                     }
                   } |
-                  contract @{ownRevAddress | bundle0{*_bulletVault}}(@"_deposit", depositPurse, retCh) = {
+                  contract @{ownRevAddress | bundle0{*_necVault}}(@"_deposit", depositPurse, retCh) = {
                     _depositTemplate!(*purse, *depositPurse, *retCh)
                   }
                 }
@@ -322,7 +322,7 @@ in {
                   RevAddress!("validate", revAddress, *revAddressValid) |
                   @Either!("fromNillableError <-", *revAddressValid, *revAddressValidEither) |
                   @Either!("fromBoolean", amount >= 0, "Amount must be non-negative", *amountNonNegative) |
-                  @AuthKey!("check", *authKey, (*_bulletVault, ownRevAddress), *authKeyValidCh) |
+                  @AuthKey!("check", *authKey, (*_necVault, ownRevAddress), *authKeyValidCh) |
                   @Either!("fromBoolean <-", *authKeyValidCh, "Invalid AuthKey", *authKeyValidEitherCh) |
                   @Either!("productR <-", *revAddressValidEither, *amountNonNegative, *parametersOkCh) |
                   @Either!("productR <-", *parametersOkCh, *authKeyValidEitherCh, *parametersAndAuthOkCh) |
@@ -335,7 +335,7 @@ in {
                   } |
                   @Either!("flatMap <-", *eitherPurseCh, *doDeposit, *ret) |
                   for (@p, retCh <- doDeposit) {
-                    @{revAddress | bundle0{*_bulletVault}}!("_deposit", p, *retCh)
+                    @{revAddress | bundle0{*_necVault}}!("_deposit", p, *retCh)
                   }
                 }
               } |
@@ -349,9 +349,9 @@ in {
                 }
               } 
               |
-              insertArbitrary!(bundle+{*BulletVault}, *uriOut) |
+              insertArbitrary!(bundle+{*NecVault}, *uriOut) |
               for(@uri <- uriOut) {
-                stdout!("Bullet here:")|
+                stdout!("NEC here:")|
                 stdout!(uri)|
                 deployId!(uri)// |
               }

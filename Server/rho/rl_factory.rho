@@ -1,5 +1,5 @@
 new userCh, print(`rho:io:stdout`), ret in {
-    contract @{"rl_factory"}(checkBalance, transfer, checkBulletBalance, depositForBullet) = {
+    contract @{"rl_factory"}(checkBalance, transfer, checkBulletBalance, depositForBullet, checkNECBalance, depositForNEC) = {
         contract checkBalance(addr, ret) = {
             new rl(`rho:registry:lookup`), RevVaultCh, vaultCh, balanceCh in {
                 rl!(`rho:rchain:revVault`, *RevVaultCh) |
@@ -53,11 +53,11 @@ new userCh, print(`rho:io:stdout`), ret in {
         |
         contract checkBulletBalance(addr, ret) = {
             new rl(`rho:registry:lookup`), BulletVaultCh, vaultCh, balanceCh, res in {
-                rl!(`rho:id:7ikbnf4s9odmzd88rh6k8wyojb3zsk13mbohsgmnpdwqbqmfnjbcbu`, *BulletVaultCh) |
+                rl!(`rho:id:wnbdfonhkwbgy4g5y5aky8bkob9wzc1zn74b1kx8axr3c7rym39pmw`, *BulletVaultCh) |
                 for (@BulletVault <- BulletVaultCh) {
                     match *addr {
                         revAddress => {
-                            print!(("Accessing vault at RevAddress", revAddress)) |
+                            print!(("Accessing BulletVault at RevAddress", revAddress)) |
                             @BulletVault!("findOrCreate", revAddress, *vaultCh) |
                             // @BulletVault!("test", *res)|
                             // @"BulletVault"!("findOrCreate", *addr, *vaultCh) |
@@ -65,7 +65,7 @@ new userCh, print(`rho:io:stdout`), ret in {
                                 print!("Obtained vault, checking balance") |
                                 @vault!("balance", *balanceCh) |
                                 for (@balance <- balanceCh) {
-                                    print!("Bullet Balance is:",balance)
+                                    ret!(balance)
                                 }
                             }
                         }
@@ -76,14 +76,54 @@ new userCh, print(`rho:io:stdout`), ret in {
         |
         contract depositForBullet(amount) = {
             new rl(`rho:registry:lookup`), BulletVaultCh, retCh in {
-                rl!(`rho:id:twtuc9w1mrptu1sbtkzt6syzk4n88587afxmshcxk5qeff6dynspm9`, *BulletVaultCh) |
+                rl!(`rho:id:wnbdfonhkwbgy4g5y5aky8bkob9wzc1zn74b1kx8axr3c7rym39pmw`, *BulletVaultCh) |
                 for (@BulletVault <- BulletVaultCh) {
                     match *amount{
                         amount => {
                             print!("start deposit")|
                             @BulletVault!("deposit", amount, *retCh) |
                             for (@result <- retCh) {
-                                print!(("Finished deposit, pay amount: ", amount, "result was:", result))
+                                print!(("Finished deposit, pay amount: ", amount, "get bullet amount:", amount * 2 / 100))
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        |
+        contract checkNECBalance(addr, ret) = {
+            new rl(`rho:registry:lookup`), NecVaultCh, vaultCh, balanceCh, res in {
+                rl!(`rho:id:c1rgsjz9q7tbbg5jptqd8kpn8jzfn9trmyib166wp5sx7ejdxf1uxf`, *NecVaultCh) |
+                for (@NecVault <- NecVaultCh) {
+                    match *addr {
+                        revAddress => {
+                            print!(("Accessing NECVault at RevAddress", revAddress)) |
+                            @NecVault!("findOrCreate", revAddress, *vaultCh) |
+                            // @NecVault!("test", *res)|
+                            // @"NecVault"!("findOrCreate", *addr, *vaultCh) |
+                            for (@(true, vault) <- vaultCh) {
+                                print!("Obtained vault, checking balance") |
+                                @vault!("balance", *balanceCh) |
+                                for (@balance <- balanceCh) {
+                                    ret!(balance)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        |
+        contract depositForNEC(amount) = {
+            new rl(`rho:registry:lookup`), NecVaultCh, retCh in {
+                rl!(`rho:id:c1rgsjz9q7tbbg5jptqd8kpn8jzfn9trmyib166wp5sx7ejdxf1uxf`, *NecVaultCh) |
+                for (@NecVault <- NecVaultCh) {
+                    match *amount{
+                        amount => {
+                            print!("start deposit")|
+                            @NecVault!("deposit", amount, *retCh) |
+                            for (@result <- retCh) {
+                                print!(("Finished deposit, pay amount: ", amount, "get nec amount:", amount / 100))
                             }
                         }
                     }

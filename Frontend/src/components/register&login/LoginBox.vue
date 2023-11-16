@@ -46,6 +46,7 @@ function login() {
             balance: res.data.balance,
             revAddr: res.data.addr,
             bulletBalance: res.data.bulletBalance,
+            necBalance: res.data.necBalance,
         });
 
         console.log(res.data);

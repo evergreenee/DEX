@@ -44,8 +44,8 @@ app.post('/api/login', (req, res) => {
     let PublicK = rchainToolkit.utils.publicKeyFromPrivateKey(`${req.body.privateKey}`);
     let addr = rchainToolkit_rev.revAddressFromPublicKey(PublicK);
     //第一次：查看REV余额并返回
-    let rho_code = `new userCh, checkBalance, transfer, ret, checkBulletBalance, depositForBullet in {
-                        @{"rl_factory"}!(*checkBalance, *transfer, *checkBulletBalance, *depositForBullet)
+    let rho_code = `new userCh, checkBalance, transfer, ret, checkBulletBalance, depositForBullet, checkNECBalance, depositForNEC in {
+                        @{"rl_factory"}!(*checkBalance, *transfer, *checkBulletBalance, *depositForBullet, *checkNECBalance, *depositForNEC)
                         |
                         checkBalance!("${addr}", *ret)
                     }`;
@@ -53,17 +53,32 @@ app.post('/api/login', (req, res) => {
         (ret) => {
             combinedData.balance = ret;
             //第二次：查看Bullet余额并返回
-            rho_code = `new userCh, checkBalance, transfer, ret, checkBulletBalance, depositForBullet in {
-                            @{"rl_factory"}!(*checkBalance, *transfer, *checkBulletBalance, *depositForBullet)
+            rho_code = `new userCh, checkBalance, transfer, ret, checkBulletBalance, depositForBullet, checkNECBalance, depositForNEC in {
+                            @{"rl_factory"}!(*checkBalance, *transfer, *checkBulletBalance, *depositForBullet, *checkNECBalance, *depositForNEC)
                             |
                             checkBulletBalance!("${addr}", *ret)
                         }`;
             rho_deploy.func_deploy(rho_code, 3).then(
                 (ret) => {
-                    combinedData.addr = addr; //REV地址
-                    combinedData.publicKey = PublicK; //公钥
                     combinedData.bulletBalance = ret;
-                    res.send(JSON.stringify(combinedData));
+                    //第三次：查看NEC余额并返回
+                    rho_code = `new userCh, checkBalance, transfer, ret, checkBulletBalance, depositForBullet, checkNECBalance, depositForNEC in {
+                        @{"rl_factory"}!(*checkBalance, *transfer, *checkBulletBalance, *depositForBullet, *checkNECBalance, *depositForNEC)
+                        |
+                        checkNECBalance!("${addr}", *ret)
+                    }`;
+
+                    rho_deploy.func_deploy(rho_code, 3).then(
+                        (ret) => {
+                            combinedData.necBalance = ret;
+        
+                            combinedData.addr = addr; //REV地址
+                            combinedData.publicKey = PublicK; //公钥
+                            
+                            res.send(JSON.stringify(combinedData));
+        
+                        }
+                    );
 
                 }
             );
@@ -75,8 +90,8 @@ app.post('/api/trans', (req, res) => {
     var from = `${req.body.from}`
     var to = `${req.body.to}`;
     var amount = `${req.body.amount}`;
-    let rho_code = `new userCh, checkBalance, transfer, ret, checkBulletBalance, depositForBullet in {
-                        @{"rl_factory"}!(*checkBalance, *transfer, *checkBulletBalance, *depositForBullet)
+    let rho_code = `new userCh, checkBalance, transfer, ret, checkBulletBalance, depositForBullet, checkNECBalance, depositForNEC in {
+                        @{"rl_factory"}!(*checkBalance, *transfer, *checkBulletBalance, *depositForBullet, *checkNECBalance, *depositForNEC)
                         |
                         transfer!("${from}", "${to}", ${amount})
                      }`;
@@ -93,10 +108,17 @@ app.post('/api/exchange', (req, res) => {
     var amount = `${req.body.amount}`;
     let rho_code;
     if (pay === "REV" && get === "Bullet") {
-        rho_code = `new userCh, checkBalance, transfer, ret, checkBulletBalance, depositForBullet in {
-            @{"rl_factory"}!(*checkBalance, *transfer, *checkBulletBalance, *depositForBullet)
+        rho_code = `new userCh, checkBalance, transfer, ret, checkBulletBalance, depositForBullet, checkNECBalance, depositForNEC in {
+            @{"rl_factory"}!(*checkBalance, *transfer, *checkBulletBalance, *depositForBullet, *checkNECBalance, *depositForNEC)
             |
             depositForBullet!(${amount})
+         }`;
+    }
+    if (pay === "REV" && get === "NEC"){
+        rho_code = `new userCh, checkBalance, transfer, ret, checkBulletBalance, depositForBullet, checkNECBalance, depositForNEC in {
+            @{"rl_factory"}!(*checkBalance, *transfer, *checkBulletBalance, *depositForBullet, *checkNECBalance, *depositForNEC)
+            |
+            depositForNEC!(${amount})
          }`;
     }
 

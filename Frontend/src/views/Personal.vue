@@ -83,6 +83,13 @@ const cards = [
         height: 175,
         show: true
     },
+    {
+        title: 'NEC余额',
+        text: userStore.necBalance,
+        flex: 3,
+        height: 175,
+        show: true
+    },
 ];
 
 </script>
