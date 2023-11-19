@@ -5,6 +5,7 @@ const rchainToolkit_grpc = require('@fabcotech/rchain-toolkit/dist/grpc.js');
 const fs = require('fs');
 
 const PRIVATE_KEY = '28a5c9ac133b4449ca38e9bdf7cacdce31079ef6b3ac2f0a080af83ecff98b36';
+//const PRIVATE_KEY = '4742cbf393e6b11b563f2afffedb9f4e7f7f688816813977f6fc92bf4d8f1c3d';
 const PUBLIC_KEY = rchainToolkit.utils.publicKeyFromPrivateKey(PRIVATE_KEY);
 //const READ_ONLY_HOST = 'http://localhost:40403';
 const READ_ONLY_HOST = 'http://192.168.59.133:40403';

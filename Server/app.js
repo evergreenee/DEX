@@ -86,7 +86,7 @@ app.post('/api/login', (req, res) => {
     );
 });
 
-var revAmount = 0;
+var revAmount = 100000;
 var BulletAmount = 0;
 var NECAmount = 0;
 

@@ -53,7 +53,7 @@ new userCh, print(`rho:io:stdout`), ret in {
         |
         contract checkBulletBalance(addr, ret) = {
             new rl(`rho:registry:lookup`), BulletVaultCh, vaultCh, balanceCh, res in {
-                rl!(`rho:id:ixgdkbndz36r8bzka3yb58iw897sjumu5q3gygf7o8gf6wbxhb69zr`, *BulletVaultCh) |
+                rl!(`rho:id:96mnxtyedk8ra5iwc7ouwbkyinwqxkbqom9kr4ry49fwsm3y6eidzg`, *BulletVaultCh) |
                 for (@BulletVault <- BulletVaultCh) {
                     match *addr {
                         revAddress => {
@@ -76,7 +76,7 @@ new userCh, print(`rho:io:stdout`), ret in {
         |
         contract depositForBullet(amount, rate) = {
             new rl(`rho:registry:lookup`), BulletVaultCh, retCh in {
-                rl!(`rho:id:ixgdkbndz36r8bzka3yb58iw897sjumu5q3gygf7o8gf6wbxhb69zr`, *BulletVaultCh) |
+                rl!(`rho:id:96mnxtyedk8ra5iwc7ouwbkyinwqxkbqom9kr4ry49fwsm3y6eidzg`, *BulletVaultCh) |
                 for (@BulletVault <- BulletVaultCh) {
                     match (*amount, *rate){
                         (amount, rate) => {
@@ -93,7 +93,7 @@ new userCh, print(`rho:io:stdout`), ret in {
         |
         contract checkNECBalance(addr, ret) = {
             new rl(`rho:registry:lookup`), NecVaultCh, vaultCh, balanceCh, res in {
-                rl!(`rho:id:zogs6iegbqxrstnak1x3i6mwysjp97iusq7pnnzkpeuthiwx4hmzjy`, *NecVaultCh) |
+                rl!(`rho:id:q93wo3kskhgeqwdyys5deyki7whutqofd373yayn7bthgmsjf9cib5`, *NecVaultCh) |
                 for (@NecVault <- NecVaultCh) {
                     match *addr {
                         revAddress => {
@@ -116,7 +116,7 @@ new userCh, print(`rho:io:stdout`), ret in {
         |
         contract depositForNEC(amount, rate) = {
             new rl(`rho:registry:lookup`), NecVaultCh, retCh in {
-                rl!(`rho:id:zogs6iegbqxrstnak1x3i6mwysjp97iusq7pnnzkpeuthiwx4hmzjy`, *NecVaultCh) |
+                rl!(`rho:id:q93wo3kskhgeqwdyys5deyki7whutqofd373yayn7bthgmsjf9cib5`, *NecVaultCh) |
                 for (@NecVault <- NecVaultCh) {
                     match (*amount, *rate){
                         (amount, rate) => {
