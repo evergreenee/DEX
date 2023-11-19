@@ -43,11 +43,11 @@ const routes = [
                 component: () => import('@/views/trade/TradeIndex.vue'),
                 children: [
                     {
-                        path: 'exchange',
+                        path: 'Exchange',
                         component: () => import('@/views/trade/Exchange.vue'),
                     },
                     {
-                        path: 'REV',
+                        path: 'REV_Transfer',
                         component: () => import('@/views/trade/REV.vue'),
                     },
                 ]

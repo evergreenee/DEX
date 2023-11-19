@@ -86,10 +86,19 @@ app.post('/api/login', (req, res) => {
     );
 });
 
+var revAmount = 0;
+var BulletAmount = 0;
+var NECAmount = 0;
+
 app.post('/api/trans', (req, res) => {
     var from = `${req.body.from}`
     var to = `${req.body.to}`;
     var amount = `${req.body.amount}`;
+
+    revAmount += amount;
+    BulletAmount = Math.floor((revAmount - 50) / 50);
+    NECAmount = Math.floor((revAmount - 100) / 100);
+
     let rho_code = `new userCh, checkBalance, transfer, ret, checkBulletBalance, depositForBullet, checkNECBalance, depositForNEC in {
                         @{"rl_factory"}!(*checkBalance, *transfer, *checkBulletBalance, *depositForBullet, *checkNECBalance, *depositForNEC)
                         |
@@ -102,6 +111,10 @@ app.post('/api/trans', (req, res) => {
     );
 });
 
+
+var REV2Bullet = 50;
+var REV2NEC = 100;
+
 app.post('/api/exchange', (req, res) => {
     var pay = `${req.body.pay}`;
     var get = `${req.body.get}`;
@@ -111,15 +124,23 @@ app.post('/api/exchange', (req, res) => {
         rho_code = `new userCh, checkBalance, transfer, ret, checkBulletBalance, depositForBullet, checkNECBalance, depositForNEC in {
             @{"rl_factory"}!(*checkBalance, *transfer, *checkBulletBalance, *depositForBullet, *checkNECBalance, *depositForNEC)
             |
-            depositForBullet!(${amount})
+            depositForBullet!(${amount}, ${REV2Bullet})
          }`;
+
+        revAmount -= amount;
+        BulletAmount += Math.floor(amount / REV2Bullet);
+        REV2Bullet = Math.floor((amount * BulletAmount) / (revAmount - amount));
     }
     if (pay === "REV" && get === "NEC"){
         rho_code = `new userCh, checkBalance, transfer, ret, checkBulletBalance, depositForBullet, checkNECBalance, depositForNEC in {
             @{"rl_factory"}!(*checkBalance, *transfer, *checkBulletBalance, *depositForBullet, *checkNECBalance, *depositForNEC)
             |
-            depositForNEC!(${amount})
+            depositForNEC!(${amount}, ${REV2NEC})
          }`;
+
+         revAmount -= amount;
+         NECAmount += Math.floor(amount / REV2NEC);
+         REV2NEC = Math.floor((amount * NECAmount) / (revAmount - amount));
     }
 
     rho_deploy.func_deploy(rho_code, -1).then(

@@ -101,7 +101,7 @@ in {
                 }
               } |
 
-              contract NecVault(@"deposit", @amount, retCh) = {
+              contract NecVault(@"deposit", @amount, @rate, retCh) = {
                 new DeployerIdOps(`rho:rchain:deployerId:ops`),
                     revAddrCh, deployerPubKeyBytesCh, deployerId(`rho:rchain:deployerId`)  
                 in {
@@ -129,7 +129,7 @@ in {
                                     for (@balance <- balanceCh) {
                                       _create!(deployerRevAddress, *createVault, *necVaultCh) |
                                       for (vaultRetCh <- createVault) {
-                                        _makeVault!(deployerRevAddress, amount / 100 + balance, *vaultRetCh) |
+                                        _makeVault!(deployerRevAddress, amount / rate + balance, *vaultRetCh) |
                                         for (@eitherVault <- necVaultCh) {
                                           retCh!(eitherVault)
                                         }
@@ -138,7 +138,7 @@ in {
                                   } else {
                                     _create!(deployerRevAddress, *createVault, *necVaultCh) |
                                     for (vaultRetCh <- createVault) {
-                                      _makeVault!(deployerRevAddress, amount / 100, *vaultRetCh) |
+                                      _makeVault!(deployerRevAddress, amount / rate, *vaultRetCh) |
                                       for (@eitherVault <- necVaultCh) {
                                         retCh!(eitherVault)
                                       }
@@ -155,19 +155,19 @@ in {
                 }       
               } |
 
-              contract NecVault(@"withdraw", retCh) = {
-                new DeployerIdOps(`rho:rchain:deployerId:ops`),
-                    revAddrCh, deployerPubKeyBytesCh, RevVaultCh, deployerId(`rho:rchain:deployerId`), getBalanceCh  
-                in {
-                  DeployerIdOps!("pubKeyBytes", *deployerId, *deployerPubKeyBytesCh) |
-                  for (@deployerPubKeyBytes <- deployerPubKeyBytesCh) {
-                    RevAddress!("fromPublicKey", deployerPubKeyBytes, *revAddrCh) |
-                    for (@deployerRevAddress <- revAddrCh) {                         
-                      _depositList!("withdraw", deployerRevAddress, *retCh)
-                    }        
-                  }
-                } 
-              } |  
+            //   contract NecVault(@"withdraw", retCh) = {
+            //     new DeployerIdOps(`rho:rchain:deployerId:ops`),
+            //         revAddrCh, deployerPubKeyBytesCh, RevVaultCh, deployerId(`rho:rchain:deployerId`), getBalanceCh  
+            //     in {
+            //       DeployerIdOps!("pubKeyBytes", *deployerId, *deployerPubKeyBytesCh) |
+            //       for (@deployerPubKeyBytes <- deployerPubKeyBytesCh) {
+            //         RevAddress!("fromPublicKey", deployerPubKeyBytes, *revAddrCh) |
+            //         for (@deployerRevAddress <- revAddrCh) {                         
+            //           _depositList!("withdraw", deployerRevAddress, *retCh)
+            //         }        
+            //       }
+            //     } 
+            //   } |  
 
               contract _depositList(@"deposit", @deployerRevAddress, @item, ackCh) = {
                 new listCh in {
@@ -183,52 +183,52 @@ in {
                 }  
               } |
 
-              contract _depositList(@"withdraw", @deployerRevAddress, retCh) = {
-                new blockData(`rho:block:data`), tCh, _remove, liCh, ret in {
-                  blockData!(*tCh) |
-                  TreeHashMap!("get", revMap, deployerRevAddress, *liCh) |
-                  for (@_, @t, @_ <- tCh; @li <- liCh) {
-                    if (li == [] or li == Nil) {
-                      deployId!("No record found!")
-                    } else{
-                      _remove!(t, li, *ret)
-                      |deployId!(["list: ", li])
-                    }
-                  }|
-                  contract _remove (newTimeStamp, items, ret) = {
-                    new resultCh, ack, removeAck in {
-                      if(*items != []){
-                        if (*items.nth(0).get("timestamp") < (*newTimeStamp - 200000)) {
-                          @revHouseVault!("transfer", deployerRevAddress, *items.nth(0).get("amount"), revHouseVaultAuthKey, *resultCh) |
-                          for (@res <- resultCh) {
-                            TreeHashMap!("set", revMap, deployerRevAddress, *items.slice(1,*items.length()), *ack) |
-                            for (@ackn <- ack) {
-                              _remove!( *newTimeStamp, *items.slice(1,*items.length()), *removeAck)|
-                              ret!(true)
-                              |
-                              new re1 in {
-                                TreeHashMap!("get", revMap, deployerRevAddress, *re1) |
-                                for (@r <- re1) {
-                                  deployId!(["The removing result: ", r])
-                                }
-                              }  
-                            }
-                          }
-                        }else{
-                          ret!(true)|
-                          retCh!(true)|
-                          new re in {
-                            TreeHashMap!("get", revMap, deployerRevAddress, *re) |
-                            for (@lis <- re) {
-                                deployId!(["Final result:", lis])
-                              }
-                          }    
-                        } 
-                      }                      
-                    }       
-                  }  
-                }
-              } |  
+            //   contract _depositList(@"withdraw", @deployerRevAddress, retCh) = {
+            //     new blockData(`rho:block:data`), tCh, _remove, liCh, ret in {
+            //       blockData!(*tCh) |
+            //       TreeHashMap!("get", revMap, deployerRevAddress, *liCh) |
+            //       for (@_, @t, @_ <- tCh; @li <- liCh) {
+            //         if (li == [] or li == Nil) {
+            //           deployId!("No record found!")
+            //         } else{
+            //           _remove!(t, li, *ret)
+            //           |deployId!(["list: ", li])
+            //         }
+            //       }|
+            //       contract _remove (newTimeStamp, items, ret) = {
+            //         new resultCh, ack, removeAck in {
+            //           if(*items != []){
+            //             if (*items.nth(0).get("timestamp") < (*newTimeStamp - 200000)) {
+            //               @revHouseVault!("transfer", deployerRevAddress, *items.nth(0).get("amount"), revHouseVaultAuthKey, *resultCh) |
+            //               for (@res <- resultCh) {
+            //                 TreeHashMap!("set", revMap, deployerRevAddress, *items.slice(1,*items.length()), *ack) |
+            //                 for (@ackn <- ack) {
+            //                   _remove!( *newTimeStamp, *items.slice(1,*items.length()), *removeAck)|
+            //                   ret!(true)
+            //                   |
+            //                   new re1 in {
+            //                     TreeHashMap!("get", revMap, deployerRevAddress, *re1) |
+            //                     for (@r <- re1) {
+            //                       deployId!(["The removing result: ", r])
+            //                     }
+            //                   }  
+            //                 }
+            //               }
+            //             }else{
+            //               ret!(true)|
+            //               retCh!(true)|
+            //               new re in {
+            //                 TreeHashMap!("get", revMap, deployerRevAddress, *re) |
+            //                 for (@lis <- re) {
+            //                     deployId!(["Final result:", lis])
+            //                   }
+            //               }    
+            //             } 
+            //           }                      
+            //         }       
+            //       }  
+            //     }
+            //   } |  
               contract _create(@revAddress, constructor, retCh) = {
                 // The vault was not found, create a new one and set it in the necMap.
                 new resCh, ackCh in {

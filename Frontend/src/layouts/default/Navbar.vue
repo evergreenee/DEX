@@ -55,8 +55,8 @@ const rail = ref(true)
 
 const tradeItems = [
     //{title: 'p1', route: '/personal/p1'}
-    { title: 'exchange', route: '/index/trade/exchange' },
-    { title: 'REV', route: '/index/trade/REV' },
+    { title: 'Exchange', route: '/index/trade/Exchange' },
+    { title: 'REV Transfer', route: '/index/trade/REV_Transfer' },
 ]
 const visaulItems = [
     { title: 'option1', route: '/resources/fact' },
@@ -74,7 +74,7 @@ const sections = [
         icon: 'mdi-account',
         title: 'Trade',
         route: '/trade',
-        subheader: '小标题',
+        subheader: '交易',
         items: tradeItems
     },
     {
